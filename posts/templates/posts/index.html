@@ -6,13 +6,10 @@ Only Admins can see this
 {% endif %}
 
 <div class="container">
-
-
-
     <div class="col-md-9">
         <div class="row">
             {% for post in posts %}
-            <div class="col-md-3 mb-3">
+            <div class="col-md-3">
                 <div class="card">
                     {% if post.image  %}
                     <img src="{{post.image.url}}" class="card-img-top" />
@@ -24,8 +21,9 @@ Only Admins can see this
                             </b>
                         </p>
 
-                        <a class="card-link btn btn-primary" href=#>Show</a>
-
+                        <a class="card-link btn btn-primary" href=#>Comment</a>
+                        <br><br>
+                        <a class="card-link btn btn-primary" href=#>&#9829;</a>
                     </div>
                 </div>
             </div>

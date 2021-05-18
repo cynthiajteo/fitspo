@@ -14,15 +14,15 @@ def view_create(request):
     form = PostForm()
     # workoutForm = WorkoutForm()
     if request.method == 'POST':
-        form = PostForm(request.POST)
-        # workoutForm = WorkoutForm(request.POST)
+        form = PostForm(request.POST, request.FILES)
+
         if form.is_valid():
-            post = Post(image=request.POST['image'])
+            post = Post(
+                workout=request.POST['workout'],
+                image=request.FILES['image'])
             post.save()
-        # if workoutForm.is_valid():
-        #     workout = Workout(workout=request.POST['workout'])
-        #     workout.save()
+            return redirect('/')
+
     posts = Post.objects.all()
-    # workouts = Workout.objects.all()
     context = {'form': form}
     return render(request, 'posts/create.html', context)

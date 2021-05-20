@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+}
+
+.card-img-top {
+    /* width: 250px; */
+    height: 250px;
+    object-fit: fill;
+}
+
+.col-md-4 {
+    width: 300px;
+}
+
+.col-md-9 {
+    width: 80%;
+}
+
+.row {
+    width: 1000px;
+}

@@ -9,7 +9,6 @@ class PostForm(forms.ModelForm):
         fields = '__all__'
 
         widgets = {
-            'image': forms.FileInput(attrs={'class': 'form-control'}),
             'workout': forms.Textarea(attrs={
                 'class': 'form-control',
                 'placeholder': 'add your workout here'

@@ -10,6 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 from pathlib import Path
 import os
 from dotenv import load_dotenv, find_dotenv
@@ -41,7 +44,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary',
 ]
+
+# add config
+cloudinary.config(
+    cloud_name=os.environ.get('CLOUD_NAME'),
+    api_key=os.environ.get('API_KEY'),
+    api_secret=os.environ.get('API_SECRET'),
+    secure=True
+)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

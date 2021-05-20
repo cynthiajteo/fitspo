@@ -1,6 +1,7 @@
 from django import forms
 from django.forms import widgets
 from .models import *
+from cloudinary.forms import CloudinaryFileField
 
 
 class PostForm(forms.ModelForm):
@@ -9,7 +10,7 @@ class PostForm(forms.ModelForm):
         fields = '__all__'
 
         widgets = {
-            'image': forms.FileInput(attrs={'class': 'form-control'}),
+
             'workout': forms.Textarea(attrs={
                 'class': 'form-control',
                 'placeholder': 'add your workout here'

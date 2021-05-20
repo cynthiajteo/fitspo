@@ -12,7 +12,6 @@ def view_index(request):
 
 def view_create(request):
     form = PostForm()
-    # workoutForm = WorkoutForm()
     if request.method == 'POST':
         form = PostForm(request.POST, request.FILES)
 
@@ -45,5 +44,3 @@ def view_post(request, pk):
         form = PostForm(instance=post)
         context = {'post': post, 'edit': True, 'form': form}
         return redirect(request, 'posts/show.html', context)
-    
-    

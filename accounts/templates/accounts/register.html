@@ -1,0 +1,54 @@
+{% extends 'accounts/base.html' %}
+
+{% block content %}
+<h1> Django form </h1>
+
+{% comment %} for django built in form {% endcomment %}
+{% comment %} <form action="" method="post">
+    {{form}}
+    <button type="submit">Create User</button>
+</form> {% endcomment %}
+
+
+<hr />
+<h1>Custom Registration Form</h1>
+<div class="container">
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-6">
+                <label>First Name</label>
+                <input type="text" class="form-control" name="first_name">
+            </div>
+            <div class="col-md-6">
+                <label>Last Name</label>
+                <input type="text" class="form-control" name="last_name"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label>Email</label>
+                <input type="text" class="form-control" name="email">
+            </div>
+            <div class="col-md-6">
+                <label>Username</label>
+                <input type="text" class="form-control" name="username">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <label>Password</label>
+                <input type="password" class="form-control" name="password">
+            </div>
+
+            <div class="col-md-6">
+                <label>Password confirm</label>
+                <input type="password" class="form-control" name="password_confirm"></div>
+        </div>
+
+        <button class="btn btn-primary">Register</button>
+    </form>
+
+</div>
+{% endblock content %}

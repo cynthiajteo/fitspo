@@ -23,6 +23,8 @@ class PostForm(forms.ModelForm):
 
 
 class EditForm(forms.ModelForm):
+    hidden = forms.BooleanField(label='delete')
+
     class Meta:
         model = Post
         fields = '__all__'

@@ -11,7 +11,7 @@ Only Admins can see this
             {% for post in posts %}
             <div class="col-md-4">
                 <div class="card">
-                    {{post.name}}
+                    <p class='username'>{{post.name}}</p>
 
                     {% if post.image  %}
                     <img src="{{post.image.url}}" class="card-img-top" />

@@ -44,13 +44,13 @@ def view_post(request, pk):
         return redirect('posts:all_posts')
 
     if request.method == 'POST' and request.GET['action'] == 'edit':
-        form = PostForm(request.POST, request.FILES, instance=post)
+        form = EditForm(request.POST, request.FILES, instance=post)
         if form.is_valid():
             form.save()
-            return redirect('posts:all_posts', post.id)
+            return redirect('posts:post_show', post.id)
 
     if request.GET.get('action') == 'edit':
-        form = PostForm(instance=post)
+        form = EditForm(instance=post)
         context = {'post': post, 'edit': True, 'form': form}
         return render(request, 'posts/show.html', context)
 

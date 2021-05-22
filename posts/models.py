@@ -29,7 +29,7 @@ class Post(models.Model):
         }
 
     def get_absolute_url(self):
-        return reverse("post_show", kwargs={"pk": self.pk})
+        return reverse("post_show", kwargs={"pk": self.pk, "post.id": self.id, "name.id": self.name.id})
 
 
 class Like(models.Model):

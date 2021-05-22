@@ -3,7 +3,6 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
-# this djangos custom user
 from django.contrib.auth.forms import UserCreationForm
 
 

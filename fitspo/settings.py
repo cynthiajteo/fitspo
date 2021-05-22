@@ -71,6 +71,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+SESSION_COOKIE_AGE = 86400
 
 ROOT_URLCONF = 'fitspo.urls'
 

@@ -10,7 +10,7 @@ Only Admins can see this
         <div class="row ">
             {% for post in posts %}
             <div class="col-md-4">
-                <div class="card" style='height: 25rem;'>
+                <div class="card">
                     {{post.name}}
 
                     {% if post.image  %}
@@ -25,10 +25,13 @@ Only Admins can see this
 
                             </p>
                         </a>
-                        <p>Posted On: {{post.created_at|date:'d M Y' }}</p>
-                        <a class="card-link btn btn-primary" href=#>Comment</a>
-                        <br>
-                        <a class="card-link btn btn-primary" href=#>&#9829;</a>
+                        <p class="date-text">Posted On: {{post.created_at|date:'d M Y' }}</p>
+                        <div class="text-center">
+                            <a class="btn btn-primary btn-sm" href=#>Comment</a>
+
+                            <a class="card-link btn btn-primary btn-sm" href=#>&#9829;</a>
+                        </div>
+
                     </div>
                 </div>
             </div>

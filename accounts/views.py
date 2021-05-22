@@ -4,6 +4,8 @@ from django.contrib import messages
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from posts.models import *
 
 
 def views_register(request):
@@ -61,3 +63,15 @@ def views_login(request):
 def views_logout(request):
     logout(request)
     return redirect('accounts:login')
+
+
+@login_required
+def views_profile(request, user_id):
+    try:
+        user = User.objects.get(pk=user_id)
+    except User.DoesNotExist:
+        return redirect('posts:all_posts')
+
+    posts = Post.objects.filter(name=user_id)
+    context = {'posts': posts}
+    return render(request, 'accounts/profile.html', context)

@@ -10,11 +10,11 @@ class Comment(models.Model):
         primary_key=True,
         default=uuid.uuid4,
         editable=False)
-    user = models.ForeignKey(
-        User, related_name='comments', on_delete=models.CASCADE)
-    comment = models.CharField(max_length=500, null=False)
+    name = models.ForeignKey(
+        User, related_name='user_comments', on_delete=models.CASCADE)
+    comment = models.TextField()
     post = models.ForeignKey(Post,
-                             on_delete=models.CASCADE, related_name='comments')
+                             on_delete=models.CASCADE, related_name='post_comments')
 
     def serialize(self):
         return {
@@ -28,3 +28,6 @@ class Comment(models.Model):
                 'workout': self.post.workout
             }
         }
+
+    def get_absolute_url(self):
+        return reverse("comment_create", kwargs={"pk": self.pk, "post.id": self.post.id, "name.id": self.name.id})

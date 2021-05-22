@@ -1,21 +1,12 @@
 {% extends 'posts/base.html' %}
 
-{% block body %}
-{% if request.user.is_superuser %}
-Only Admins can see this
-{% endif %}
-
-<div class="container">
+{% block body %}<div class="container">
     <div class="col-md-9">
         <div class="row ">
             {% for post in posts %}
             <div class="col-md-4">
                 <div class="card">
-                    {% comment %} <a class="nav-link active" aria-current="page"
-                        href="{% url 'accounts:profile_show' user.id %}">
-                        <p class='username'>{{post.name}}</p>
-                    </a> {% endcomment %}
-                    <p class='username'>{{post.name}}</p>
+
 
                     {% if post.image  %}
                     <img src="{{post.image.url}}" class="card-img-top" />
@@ -46,6 +37,5 @@ Only Admins can see this
             {% endfor %}
         </div>
     </div>
-
 
     {% endblock body %}

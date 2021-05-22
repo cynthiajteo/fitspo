@@ -1,15 +1,18 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from .models import *
 from .forms import *
 # Create your views here.
 
 
+@login_required
 def view_index(request):
     posts = Post.objects.all()
     context = {'posts': posts}
     return render(request, 'posts/index.html', context)
 
 
+@login_required
 def view_create(request):
     form = PostForm()
     if request.method == 'POST':
@@ -18,7 +21,8 @@ def view_create(request):
         if form.is_valid():
             post = Post(
                 workout=request.POST['workout'],
-                image=request.FILES['image'])
+                image=request.FILES['image'],
+                name=request.POST['name']),
             post.save()
             return redirect('posts:all_posts')
 
@@ -27,6 +31,7 @@ def view_create(request):
     return render(request, 'posts/create.html', context)
 
 
+@login_required
 def view_post(request, pk):
     try:
         post = Post.objects.get(pk=pk)

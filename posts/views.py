@@ -22,7 +22,7 @@ def view_create(request):
             post = Post(
                 workout=request.POST['workout'],
                 image=request.FILES['image'],
-                name=request.POST['name']),
+                name=request.user)
             post.save()
             return redirect('posts:all_posts')
 

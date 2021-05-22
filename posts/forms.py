@@ -4,15 +4,19 @@ from .models import *
 from cloudinary.forms import CloudinaryFileField
 
 
-# class PostForm(forms.ModelForm):
-#     class Meta:
-#         model = Post
-#         fields = '__all__'
-#         exclude = ('hidden',)
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = '__all__'
+        exclude = ('hidden',)
 
-#         widgets = {
-#             'workout': forms.Textarea(attrs={
-#                 'class': 'form-control',
-#                 'placeholder': 'add your workout here'
-#             }),
-#         }
+        widgets = {
+            'name': forms.Select(attrs={
+                'class': 'form-control',
+                'placeholder': 'Name'
+            }),
+            'workout': forms.Textarea(attrs={
+                'class': 'form-control',
+                'placeholder': 'add your workout here'
+            }),
+        }

@@ -22,7 +22,7 @@ class PostForm(forms.ModelForm):
 
 
 class EditForm(forms.ModelForm):
-    hidden = forms.BooleanField(label='delete')
+    hidden = forms.BooleanField(label='delete', required=False)
 
     class Meta:
         model = Post

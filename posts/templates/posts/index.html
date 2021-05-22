@@ -12,6 +12,7 @@ Only Admins can see this
             <div class="col-md-4">
                 <div class="card" style='height: 25rem;'>
                     {{post.name}}
+
                     {% if post.image  %}
                     <img src="{{post.image.url}}" class="card-img-top" />
                     {% endif %}
@@ -24,9 +25,9 @@ Only Admins can see this
 
                             </p>
                         </a>
-
+                        <p>Posted On: {{post.created_at|date:'d M Y' }}</p>
                         <a class="card-link btn btn-primary" href=#>Comment</a>
-                        <br><br>
+                        <br>
                         <a class="card-link btn btn-primary" href=#>&#9829;</a>
                     </div>
                 </div>

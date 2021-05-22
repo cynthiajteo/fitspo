@@ -39,7 +39,10 @@ def view_post(request, pk):
     except Post.DoesNotExist:
         return redirect('posts:all_posts')
 
-    # edit
+    if request.GET.get('action') == 'del':
+        post.delete()
+        return redirect('posts:all_posts')
+
     if request.method == 'POST' and request.GET['action'] == 'edit':
         form = PostForm(request.POST, request.FILES, instance=post)
         if form.is_valid():
@@ -49,4 +52,7 @@ def view_post(request, pk):
     if request.GET.get('action') == 'edit':
         form = PostForm(instance=post)
         context = {'post': post, 'edit': True, 'form': form}
-        return redirect(request, 'posts/show.html', context)
+        return render(request, 'posts/show.html', context)
+
+    context = {"post": post, "edit": False}
+    return render(request, 'posts/show.html', context)

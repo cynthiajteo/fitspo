@@ -2,7 +2,7 @@ from django.db import models
 import uuid
 from cloudinary.models import CloudinaryField
 from accounts.models import User
-
+from django.urls.base import reverse
 # Create your models here.
 
 
@@ -27,6 +27,9 @@ class Post(models.Model):
 
             }
         }
+
+    def get_absolute_url(self):
+        return reverse("post_show", kwargs={"pk": self.pk})
 
 
 class Like(models.Model):

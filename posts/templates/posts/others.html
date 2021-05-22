@@ -13,11 +13,7 @@
             </div>
 
 
-            <a href="{% url 'posts:post_show' post.id %}?action=edit">Edit</a>
 
-            {% if request.user.is_superuser %}
-            <a href="{% url 'posts:post_show' post.id %}?action=del">Delete</a>
-            {% endif %}
 
 
         </div>

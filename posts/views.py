@@ -39,23 +39,26 @@ def view_post(request, pk):
         post = Post.objects.get(pk=pk)
     except Post.DoesNotExist:
         return redirect('posts:all_posts')
+    if request.user == post.name:
+        if request.GET.get('action') == 'del':
+            post.delete()
+            return redirect('posts:all_posts')
 
-    if request.GET.get('action') == 'del':
-        post.delete()
-        return redirect('posts:all_posts')
+        if request.method == 'POST' and request.GET['action'] == 'edit':
+            form = EditForm(request.POST, request.FILES, instance=post)
 
-    if request.method == 'POST' and request.GET['action'] == 'edit':
-        form = EditForm(request.POST, request.FILES, instance=post)
+            if form.is_valid():
+                form.save()
+                return redirect('posts:post_show', post.id)
 
-        if form.is_valid():
-            form.save()
-            return redirect('posts:post_show', post.id)
+        if request.GET.get('action') == 'edit':
+            form = EditForm(instance=post)
 
-    if request.GET.get('action') == 'edit':
-        form = EditForm(instance=post)
-
-        context = {'post': post, 'edit': True, 'form': form}
-        return render(request, 'posts/show.html', context)
+            context = {'post': post, 'edit': True, 'form': form}
+            return render(request, 'posts/show.html', context)
+    else:
+        context = {"post": post, "edit": False}
+        return render(request, 'posts/others.html', context)
 
     context = {"post": post, "edit": False}
     return render(request, 'posts/show.html', context)

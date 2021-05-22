@@ -33,8 +33,8 @@ def views_register(request):
             return render(request, 'accounts/register.html')
 
         login(request, user)
-        # return redirect("posts:all_posts")
-        return render(request, "accounts/register.html")
+        return redirect("posts:all_posts")
+        # return render(request, "accounts/register.html")
     else:
         form = UserCreationForm()  # django form inbuilt
         return render(request, "accounts/register.html", {"form": form})
@@ -50,8 +50,8 @@ def views_login(request):
         # if user is not empty, then login
         if user is not None:
             login(request, user)
-            # return redirect("posts:all_posts")
-            return render(request, "accounts/register.html")
+            return redirect("posts:all_posts")
+            # return render(request, "accounts/register.html")
         else:
             messages.error(request, "username or password is incorrect")
             return render(request, "accounts/login.html")

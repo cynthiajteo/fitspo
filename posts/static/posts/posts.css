@@ -3,16 +3,18 @@
 body {
     font-family: 'Yanone Kaffeesatz', sans-serif;
     font-size: 18px;
+    background-color: rgb(205, 221, 252);
 }
 
 .container {
     display: flex;
 }
 
-.card-img-top {
-    /* width: 250px; */
-    height: 40%;
-    object-fit: fill;
+.index-image {
+    max-width: 100%;
+    min-height: 40%;
+    max-height: 40%;
+    object-fit: cover;
 }
 
 .col-md-4 {
@@ -33,7 +35,7 @@ body {
 }
 
 .text-capitalize {
-    height: 11em;
+    height: 10em;
     width: 100%;
     margin-bottom: 0;
     overflow: auto;
@@ -42,7 +44,7 @@ body {
 .date-text {
     font-size: 14px;
     text-align: end;
-    margin-top: 0.5em;
+    margin-top: 0em;
     margin-bottom: 0em;
 }
 

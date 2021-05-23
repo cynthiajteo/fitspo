@@ -19,7 +19,7 @@ Only Admins can see this
 
 
                     {% if post.image  %}
-                    <img src="{{post.image.url}}" class="card-img-top" />
+                    <img src="{{post.image.url}}" class="index-image" />
                     {% endif %}
 
                     <div class="card-body">
@@ -30,7 +30,7 @@ Only Admins can see this
 
                             </p>
                         </a>
-                        <p class="date-text">Posted On: {{post.created_at|date:'d M Y' }}</p>
+                        <p class="date-text"> {{post.created_at|date:'d M Y' }}</p>
                         <div class="text-center">
                             <a class="btn btn-primary btn-sm" href=#>Comment</a>
 

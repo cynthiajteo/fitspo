@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 from posts.models import *
 
 
+# register/sign up
 def views_register(request):
     if request.method == "POST":
         first_name = request.POST['first_name']
@@ -41,6 +42,7 @@ def views_register(request):
         return render(request, "accounts/register.html", {"form": form})
 
 
+# login
 def views_login(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -60,31 +62,35 @@ def views_login(request):
     return render(request, "accounts/login.html")
 
 
+# logout
 def views_logout(request):
     logout(request)
     return redirect('accounts:login')
 
 
+# view other profiles
 @login_required
-def views_profile(request, user_id):
+def views_others(request, pk):
     try:
-        user = User.objects.get(pk=user_id)
+        user = User.objects.get(pk=pk)
     except User.DoesNotExist:
         return redirect('posts:all_posts')
 
     posts = Post.objects.filter(
-        name=user_id, hidden=False).order_by('-created_at')
+        name_id=pk, hidden=False).order_by('-created_at')
     context = {'posts': posts}
     return render(request, 'accounts/profile.html', context)
 
 
-# def views_others(request, profile):
-#     try:
-#         profile = Profile.objects.get(pk=profile)
-#     except Profile.DoesNotExist:
-#         return redirect('posts:all_posts')
+# personal profile view
+@login_required
+def views_profile(request):
+    try:
+        user = User.objects.filter(pk=request.user.id).first()
+    except User.DoesNotExist:
+        return redirect('posts:all_posts')
 
-#     posts = Post.objects.filter(name=profile.user_id)
-#     context = {'posts': posts}
-
-#     return render(request, 'accounts/profile.html', context)
+    posts = Post.objects.filter(
+        name=request.user.id, hidden=False).order_by('-created_at')
+    context = {'posts': posts}
+    return render(request, 'accounts/profile.html', context)

@@ -4,9 +4,8 @@ from .models import *
 from .forms import *
 # Create your views here.
 
+
 # shows all posts on main page
-
-
 @login_required
 def view_index(request):
     # posts = Post.objects.all()
@@ -14,9 +13,8 @@ def view_index(request):
     context = {'posts': posts}
     return render(request, 'posts/index.html', context)
 
-# create new posts
 
-
+# create new postt
 @login_required
 def view_create(request):
     form = PostForm()
@@ -36,6 +34,7 @@ def view_create(request):
     return render(request, 'posts/create.html', context)
 
 
+# edit and delete post
 @login_required
 def view_post(request, pk):
     try:

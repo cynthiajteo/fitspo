@@ -8,11 +8,12 @@ Only Admins can see this
 <div class="container">
     <div class="col-md-9">
         <div class="row gy-2">
+
             {% for post in posts %}
             <div class="col-md-4">
                 <div class="card">
                     {% comment %} <a class="nav-link active" aria-current="page"
-                        href="{% url 'accounts:profile_show' user.id %}">
+                        href="{% url 'accounts:other_profile_show' user.id %}">
                         <p class='username'>{{post.name}}</p>
                     </a> {% endcomment %}
                     <p class='username'>{{post.name}}</p>
@@ -40,10 +41,12 @@ Only Admins can see this
                 </div>
             </div>
             {% empty %}
+
             <div class="alert alert-warning">
                 No Posts Yet
             </div>
             {% endfor %}
+
         </div>
     </div>
 

@@ -70,15 +70,14 @@ def views_logout(request):
 
 # view other profiles
 @login_required
-def views_others(request, pk):
+def views_others(request, user_id=None):
     try:
-        user = User.objects.get(pk=pk)
+        user = User.objects.get(id=user_id)
     except User.DoesNotExist:
         return redirect('posts:all_posts')
-
     posts = Post.objects.filter(
-        name_id=pk, hidden=False).order_by('-created_at')
-    context = {'posts': posts}
+        name_id=user_id, hidden=False).order_by('-created_at')
+    context = {'posts': posts, 'user': user}
     return render(request, 'accounts/profile.html', context)
 
 

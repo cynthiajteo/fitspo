@@ -12,11 +12,11 @@ Only Admins can see this
             {% for post in posts %}
             <div class="col-md-4">
                 <div class="card">
-                    {% comment %} <a class="nav-link active" aria-current="page"
-                        href="{% url 'accounts:other_profile_show' user.id %}">
+                    <a class="nav-link active" aria-current="page"
+                        href="{% url 'accounts:other_profile_show' user_id=post.name_id %}">
                         <p class='username'>{{post.name}}</p>
-                    </a> {% endcomment %}
-                    <p class='username'>{{post.name}}</p>
+                    </a>
+
 
                     {% if post.image  %}
                     <img src="{{post.image.url}}" class="card-img-top" />

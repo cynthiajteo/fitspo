@@ -10,8 +10,7 @@ from .forms import *
 @login_required
 def view_index(request):
     # posts = Post.objects.all()
-    posts = Post.objects.order_by('-created_at')
-    posts = Post.objects.filter(hidden=False)
+    posts = Post.objects.filter(hidden=False).order_by('-created_at')
     context = {'posts': posts}
     return render(request, 'posts/index.html', context)
 

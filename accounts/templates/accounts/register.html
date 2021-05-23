@@ -2,8 +2,11 @@
 
 {% block content %}
 
-<hr />
-<h1>Register Here</h1>
+
+<div class="reg-title">
+    <h1>Register Here</h1>
+</div>
+
 <div class="reg-container">
     <form action="" method="post">
         {% csrf_token %}
@@ -12,10 +15,12 @@
                 <label>First Name</label>
                 <input type="text" class="form-control" name="first_name" required>
             </div>
+
             <div class="col-md-6">
                 <label>Last Name</label>
                 <input type="text" class="form-control" name="last_name" required></div>
         </div>
+        <br />
         <div class="row">
             <div class="col-md-6">
                 <label>Email</label>
@@ -26,7 +31,7 @@
                 <input type="text" class="form-control" name="username" required>
             </div>
         </div>
-
+        <br />
         <div class="row">
             <div class="col-md-6">
                 <label>Password</label>

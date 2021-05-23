@@ -75,3 +75,15 @@ def views_profile(request, user_id):
     posts = Post.objects.filter(name=user_id)
     context = {'posts': posts}
     return render(request, 'accounts/profile.html', context)
+
+
+# def views_others(request, profile):
+#     try:
+#         profile = Profile.objects.get(pk=profile)
+#     except Profile.DoesNotExist:
+#         return redirect('posts:all_posts')
+
+#     posts = Post.objects.filter(name=profile.user_id)
+#     context = {'posts': posts}
+
+#     return render(request, 'accounts/profile.html', context)

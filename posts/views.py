@@ -4,6 +4,8 @@ from .models import *
 from .forms import *
 # Create your views here.
 
+# shows all posts on main page
+
 
 @login_required
 def view_index(request):
@@ -12,6 +14,8 @@ def view_index(request):
     posts = Post.objects.filter(hidden=False)
     context = {'posts': posts}
     return render(request, 'posts/index.html', context)
+
+# create new posts
 
 
 @login_required

@@ -7,7 +7,7 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = '__all__'
-        exclude = ('hidden',)
+        exclude = ('hidden', 'name',)
 
         widgets = {
             'name': forms.Select(attrs={

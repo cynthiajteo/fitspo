@@ -72,7 +72,8 @@ def views_profile(request, user_id):
     except User.DoesNotExist:
         return redirect('posts:all_posts')
 
-    posts = Post.objects.filter(name=user_id)
+    posts = Post.objects.filter(
+        name=user_id, hidden=False).order_by('-created_at')
     context = {'posts': posts}
     return render(request, 'accounts/profile.html', context)
 

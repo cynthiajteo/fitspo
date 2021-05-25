@@ -1,0 +1,14 @@
+{% extends 'posts/base.html' %}
+
+{% block body %} <div class="col-md-4">
+    <div class="comment-container">
+        this is the comments form
+        <form action="{% url 'comments:comment_create' post.id %}" method="post">
+            {% csrf_token %}
+            <div>
+                {{comment_form}}
+            </div>
+            <button type="submit">Add Comment</button>
+        </form>
+    </div>
+</div> {% endblock body %}

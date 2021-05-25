@@ -59,6 +59,7 @@ def view_post(request, pk):
 
             context = {'post': post, 'edit': True, 'form': form}
             return render(request, 'posts/edit.html', context)
+
     else:
         if request.user.is_superuser:
             if request.GET.get('action') == 'del':

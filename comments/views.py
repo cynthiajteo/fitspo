@@ -11,21 +11,13 @@ import json
 
 @login_required
 def views_create(request, post):
-    form = CommentForm()
     if request.method == 'POST':
-        post = Post.objects.get(pk=post)
-        form = CommentForm(request.POST)
-        if form.is_valid():
-            # form.save()
-            # 1
-            # review = Review(name=request.POST['name'], review=request.POST['review'],
-            #   book=book)
-            # review.save()
-
-            # 2
-            post = Post.objects.get(pk=post)
-            post.comments.create(
-                name=request.POST['name'], comment=request.POST['comment'])
+        comment_form = CommentForm(request.POST)
+        if comment_form.is_valid():
+            comment = Comment(name=request.user,
+                              comment=request.POST['comment'], post=post)
+            comment.save()
 
             return redirect('posts:post_show', post.id)
-    return HttpResponse({"message": "works"})
+
+    return render(request, 'posts/show.html', {'form': comment_form})

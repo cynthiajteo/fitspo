@@ -12,7 +12,7 @@ class Comment(models.Model):
         editable=False)
     name = models.ForeignKey(
         User, related_name='user_comments', on_delete=models.CASCADE)
-    comment = models.TextField()
+    comment = models.TextField(null=False)
     post = models.ForeignKey(Post,
                              on_delete=models.CASCADE, related_name='post_comments')
 

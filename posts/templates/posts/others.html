@@ -7,30 +7,24 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-9">
 
-            <img src="{{post.image.url}}" class="show-image" />
+            <img src="{{post.image.url}}" class="index-image" />
             <div class="workout-show">
                 {{post.workout}}
             </div>
-
-
-
             {% if request.user.is_superuser %}
             <a href="{% url 'posts:post_show' post.id %}?action=del">Delete</a>
             {% endif %}
-
         </div>
-        {% if edit %}
-        <div class="col-md-6">
-            <form action="{% url 'posts:post_show' post.id %}?action=edit" method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{form}}
-                <button>Save Changes</button>
-            </form>
-
+        <br />
+        <div class="comment-container">
+            this is the comments section
+            <br />
+            insert comments here
+            <br />
+            others.html
         </div>
-        {% endif %}
     </div>
 </div>
 {% endblock body %}

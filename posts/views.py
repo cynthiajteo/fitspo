@@ -42,9 +42,10 @@ def view_post(request, pk):
     except Post.DoesNotExist:
         return redirect('posts:all_posts')
     if request.user == post.name:
-        if request.GET.get('action') == 'del':
-            post.delete()
-            return redirect('posts:all_posts')
+        if request.user.is_superuser:
+            if request.GET.get('action') == 'del':
+                post.delete()
+                return redirect('posts:all_posts')
 
         if request.method == 'POST' and request.GET['action'] == 'edit':
             form = EditForm(request.POST, request.FILES, instance=post)
@@ -59,6 +60,10 @@ def view_post(request, pk):
             context = {'post': post, 'edit': True, 'form': form}
             return render(request, 'posts/edit.html', context)
     else:
+        if request.user.is_superuser:
+            if request.GET.get('action') == 'del':
+                post.delete()
+                return redirect('posts:all_posts')
         context = {"post": post, "edit": False}
         return render(request, 'posts/others.html', context)
 
@@ -74,30 +79,26 @@ def view_show_post(request, pk):
     except Post.DoesNotExist:
         return redirect('posts:all_posts')
     if request.user == post.name:
-        if request.GET.get('action') == 'del':
-            post.delete()
-            return redirect('posts:all_posts')
-
-        if request.method == 'POST' and request.GET['action'] == 'edit':
-            form = EditForm(request.POST, request.FILES, instance=post)
-
-            if form.is_valid():
-                form.save()
-                return redirect('posts:post_edit', post.id)
 
         if request.GET.get('action') == 'edit':
             form = EditForm(instance=post)
 
             context = {'post': post, 'edit': True, 'form': form}
-            return render(request, 'posts/edit.html', context)
+            return render(request, 'posts/show.html', context)
     else:
+        if request.user.is_superuser:
+            if request.GET.get('action') == 'del':
+                post.delete()
+                return redirect('posts:all_posts')
         context = {"post": post, "edit": False}
         return render(request, 'posts/others.html', context)
+
     context = {"post": post, "edit": False}
     return render(request, 'posts/show.html', context)
 
-
 # toggle like button
+
+
 @login_required
 def view_like(request, pk):
     post = Post.objects.get(pk=pk)

@@ -43,12 +43,16 @@ def view_post(request, pk):
         return redirect('posts:all_posts')
 
     if request.user == post.name:
+        if request.GET.get('action') == 'del':
+            post.delete()
+            return redirect('posts:all_posts')
+
         if request.method == 'POST' and request.GET['action'] == 'edit':
             form = EditForm(request.POST, request.FILES, instance=post)
 
             if form.is_valid():
                 form.save()
-                return redirect('posts:post_show', post.id)
+                return redirect('posts:all_posts')
 
         if request.GET.get('action') == 'edit':
             form = EditForm(instance=post)
@@ -60,6 +64,7 @@ def view_post(request, pk):
             if request.GET.get('action') == 'del':
                 post.delete()
                 return redirect('posts:all_posts')
+
         context = {"post": post, "edit": False}
         return render(request, 'posts/others.html', context)
 
@@ -76,12 +81,16 @@ def view_show_post(request, pk):
         return redirect('posts:all_posts')
 
     if request.user == post.name:
+        if request.GET.get('action') == 'del':
+            post.delete()
+            return redirect('posts:all_posts')
+
         if request.GET.get('action') == 'edit':
             form = EditForm(request.POST, request.FILES, instance=post)
 
             if form.is_valid():
                 form.save()
-                return redirect('posts:post_show', post.id)
+                return redirect('posts:all_posts')
 
             context = {'post': post, 'edit': True, 'form': form}
             return render(request, 'posts/edit.html', context)
@@ -90,6 +99,7 @@ def view_show_post(request, pk):
             if request.GET.get('action') == 'del':
                 post.delete()
                 return redirect('posts:all_posts')
+
         context = {"post": post, "edit": False}
         return render(request, 'posts/others.html', context)
 

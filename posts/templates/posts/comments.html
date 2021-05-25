@@ -1,14 +1,42 @@
 {% extends 'posts/base.html' %}
 
-{% block body %} <div class="col-md-4">
-    <div class="comment-container">
-        this is the comments form
-        <form action="{% url 'comments:comment_create' post.id %}" method="post">
-            {% csrf_token %}
-            <div>
-                {{comment_form}}
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            {{post.name}}
+            <img src="{{post.image.url}}" class="index-image" />
+            <div class="workout-show">
+                {{post.workout}}
             </div>
-            <button type="submit">Add Comment</button>
-        </form>
+        </div>
+
+        <div class="col-md-4">
+            <div class="comment-container">
+
+                {% comment %} <form action="{% url 'posts:comment_create' post.id %}" method="post">
+                    {% endcomment %}
+                    <form action="#" method="post">
+                        {% csrf_token %}
+                        {% for field in comment_form %}
+                        <div class="row mb-3">
+
+                            {{field.label_tag}}
+                            {{field}}
+                            <div class="text-danger">
+                                {{field.errors}}
+                                {{ form.non_field_errors }}
+                            </div>
+                            {% if field.help_text %}
+                            <p class="help">{{ field.help_text|safe }}</p>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                        <button>Send Comment</button>
+                    </form>
+            </div>
+        </div>
     </div>
+
+
 </div> {% endblock body %}

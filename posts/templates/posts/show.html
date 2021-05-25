@@ -29,7 +29,11 @@
                 <br />
                 show.html
             </div>
+
+            <a class="nav-link active" aria-current="page" href="{% url 'posts:comment_create' post.id %}">
+                <p class='comment'>comment</p>
+            </a>
         </div>
-        
+
     </div>
     {% endblock body %}

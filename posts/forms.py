@@ -28,3 +28,16 @@ class EditForm(forms.ModelForm):
         model = Post
         fields = '__all__'
         exclude = ('name',)
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = '__all__'
+        exclude = ('name', 'post',)
+
+        widgets = {
+            'comment': forms.Textarea(attrs={
+                'class': 'form-control',
+                'placeholder': 'comment'})
+        }

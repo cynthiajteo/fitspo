@@ -8,7 +8,6 @@ from .forms import *
 # shows all posts on main page
 @login_required
 def view_index(request):
-    # posts = Post.objects.all()
     posts = Post.objects.filter(hidden=False).order_by('-created_at')
     context = {'posts': posts}
     return render(request, 'posts/index.html', context)
@@ -108,11 +107,31 @@ def view_show_post(request, pk):
     return render(request, 'posts/show.html', context)
 
 
-# toggle like button
+# create comment
 @login_required
-def view_like(request, pk):
-    post = Post.objects.get(pk=pk)
-    like = Like.objects.get(post=pk)
-    like.liked = request.POST['liked'] == 'true'
-    like.save()
-    return render(request, 'posts:all_posts')
+def views_create_comment(request, pk):
+    try:
+        post = Post.objects.get(pk=pk)
+    except Post.DoesNotExist:
+        return redirect('posts:all_posts')
+    comment_form = CommentForm()
+    if request.method == 'POST':
+        comment_form = CommentForm(request.POST)
+
+        if comment_form.is_valid():
+            comment = Comment(name=request.user,
+                              comment=request.POST['comment'], post=post)
+            comment.save()
+            return redirect('posts:post_show', post.id)
+    context = {'comment_form': comment_form, 'post': post}
+    return render(request, 'posts/comments.html', context)
+
+
+# toggle like button
+# @login_required
+# def view_like(request, pk):
+#     post = Post.objects.get(pk=pk)
+#     like = Like.objects.get(post=pk)
+#     like.liked = request.POST['liked'] == 'true'
+#     like.save()
+#     return render(request, 'posts:all_posts')

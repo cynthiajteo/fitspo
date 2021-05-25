@@ -93,3 +93,5 @@ def views_profile(request):
         name=request.user.id, hidden=False).order_by('-created_at')
     context = {'posts': posts}
     return render(request, 'accounts/profile.html', context)
+
+

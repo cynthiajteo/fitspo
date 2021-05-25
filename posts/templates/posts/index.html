@@ -52,3 +52,24 @@ Only Admins can see this
 
 
     {% endblock body %}
+    {% block scripts %}
+    <div style="display:inline-block">
+        <label>liked</label>
+        <label class="switch">
+            <input type="checkbox" id="checkbox" value="{{like.liked}}">
+            <span class="slider round"></span>
+        </label>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script> <!-- Import Jquery Here-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#checkbox').change(function () {
+                $.post("/", {
+                    id: '{{post.id}}',
+                    liked: this.checked,
+                    csrfmiddlewaretoken: '{{ csrf_token }}'
+                });
+            });
+        });
+    </script>
+    {% endblock scripts %}

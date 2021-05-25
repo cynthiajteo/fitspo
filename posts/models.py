@@ -38,6 +38,7 @@ class Like(models.Model):
         default=uuid.uuid4,
         editable=False
     )
+    liked = models.BooleanField(default=False)
     user = models.ForeignKey(
         User, related_name="users_likes", on_delete=models.CASCADE)
     post = models.ForeignKey(

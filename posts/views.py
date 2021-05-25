@@ -14,7 +14,7 @@ def view_index(request):
     return render(request, 'posts/index.html', context)
 
 
-# create new postt
+# create new post
 @login_required
 def view_create(request):
     form = PostForm()
@@ -34,7 +34,7 @@ def view_create(request):
     return render(request, 'posts/create.html', context)
 
 
-# edit and delete post
+# edit and delete post in show page
 @login_required
 def view_post(request, pk):
     try:
@@ -64,3 +64,15 @@ def view_post(request, pk):
 
     context = {"post": post, "edit": False}
     return render(request, 'posts/show.html', context)
+
+
+# toggle like button
+@login_required
+def view_like(request, pk):
+    post = Post.objects.get(pk=pk)
+    like = Like.objects.get(post=pk)
+    like.liked = request.POST['liked'] == 'true'
+    like.save()
+    return render(request, 'posts:all_posts')
+
+

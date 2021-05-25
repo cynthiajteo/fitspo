@@ -1,0 +1,49 @@
+{% extends 'posts/base.html' %}
+
+{% block body %}
+<div class="text-center">
+    <h1> {{post.name}} </h1>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+
+            <img src="{{post.image.url}}" class="show-image" />
+            <div class="workout-show">
+                {{post.workout}}
+            </div>
+
+            {% if request.user.is_superuser %}
+            <a href="{% url 'posts:post_show' post.id %}?action=del">Delete</a>
+            {% endif %}
+
+
+        </div>
+        {% if edit %}
+        <div class="col-md-6">
+            <form action="{% url 'posts:post_show' post.id %}?action=edit" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% for field in form %}
+                <div class="row mb-3">
+
+                    {{field.label_tag}}
+                    {{field}}
+                    <div class="text-danger">
+                        {{field.errors}}
+                        {{ form.non_field_errors }}
+                    </div>
+                    {% if field.help_text %}
+                    <p class="help">{{ field.help_text|safe }}</p>
+                    {% endif %}
+                </div>
+                {% endfor %}
+                <button>Save Changes</button>
+            </form>
+
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock body %}

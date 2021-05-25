@@ -14,26 +14,20 @@
             <div class="workout-show">
                 {{post.workout}}
             </div>
-
-
-            <a href="{% url 'posts:post_show' post.id %}?action=edit">Edit</a>
-
+            <a href="{% url 'posts:post_edit' post.id %}?action=edit">Edit</a>
             {% if request.user.is_superuser %}
             <a href="{% url 'posts:post_show' post.id %}?action=del">Delete</a>
             {% endif %}
+            <br />
+            <div class="comment-container">
+                this is the comments section
+                <br />
+                insert comments here
 
-
-        </div>
-        {% if edit %}
-        <div class="col-md-6">
-            <form action="{% url 'posts:post_show' post.id %}?action=edit" method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{form}}
-                <button>Save Changes</button>
-            </form>
+            </div>
 
         </div>
-        {% endif %}
+
     </div>
 </div>
 {% endblock body %}

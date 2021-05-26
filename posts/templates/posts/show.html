@@ -21,16 +21,14 @@
             <br />
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-8 comments rounded">
             {% for comment in comments %}
 
             <p class="comment-text">
-                COMMENT: {{comment.comment}}
+                <span id="commenter">{{comment.name}}: </span> {{comment.comment}}
             </p>
-            <p class="commenter">USER:
-                {{comment.name}}
-            </p>
-            <br />
+
+            <hr />
             {% endfor %}
             <a class="nav-link active" aria-current="page" href="{% url 'posts:comment_create' post.id %}">
                 <p class='comment'>comment</p>

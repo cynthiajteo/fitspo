@@ -8,6 +8,7 @@
                 href="{% url 'accounts:other_profile_show' user_id=post.name_id %}">{{post.name}}
             </a>
             <img src="{{post.image.url}}" class="index-image" />
+
             <div class="workout-show">
                 <a href="{% url 'posts:post_show' post.id %}" class="text-decoration-none">
                     <p class="text-capitalize">
@@ -19,16 +20,14 @@
         </div>
 
 
-        <div class="col-md-4">
+        <div class="col-md-4 comments rounded">
             {% for comment in comments %}
 
             <p class="comment-text">
-                COMMENT: {{comment.comment}}
+                <span id="commenter">{{comment.name}}: </span> {{comment.comment}}
             </p>
-            <p class="commenter">USER:
-                {{comment.name}}
-            </p>
-            <br />
+
+            <hr />
             {% endfor %}
 
         </div>

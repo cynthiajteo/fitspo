@@ -39,7 +39,6 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'posts',
     'accounts',
-    # 'comments',
     'cloudinary',
     'corsheaders',
     'rest_framework',

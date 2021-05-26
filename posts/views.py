@@ -77,7 +77,6 @@ def view_post(request, pk):
 def view_show_post(request, pk):
     try:
         post = Post.objects.get(pk=pk)
-
     except Post.DoesNotExist:
         return redirect('posts:all_posts')
 

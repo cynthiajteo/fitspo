@@ -11,6 +11,7 @@
 
         <div class="login-row">
             <div class="col-md-12">
+                {{field.errors}}
                 <label>Username</label>
                 <input type="text" class="form-control" name="username" required>
             </div>
@@ -22,12 +23,20 @@
                 <input type="password" class="form-control" name="password" required>
             </div>
             <br />
+            {% if messages %}
+
+            {% for message in messages %}
+            <p class='error-msg'>{{ message }}</p>
+            {% endfor %}
+
+            {% endif %}
             <div>
                 <button class="btn btn-primary">Login</button>
             </div>
         </div>
 
     </form>
+
 </div>
 
 {% endblock content %}

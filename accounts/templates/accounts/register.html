@@ -43,6 +43,16 @@
                 <input type="password" class="form-control" name="password_confirm" required></div>
         </div>
         <br />
+        {% if messages %}
+
+        {% for message in messages %}
+        <div class="error-msg">
+            {{ message }}
+        </div>
+        {% endfor %}
+
+        {% endif %}
+        <br />
         <button class="btn btn-primary">Register</button>
     </form>
 

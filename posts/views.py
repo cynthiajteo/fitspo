@@ -81,7 +81,7 @@ def view_show_post(request, pk):
     except Post.DoesNotExist:
         return redirect('posts:all_posts')
 
-    comments = Comment.objects.filter(post=post)
+    comments = Comment.objects.filter(post=post).order_by('-created_at')
     if request.user == post.name:
         if request.GET.get('action') == 'del':
             post.delete()
@@ -119,13 +119,14 @@ def views_create_comment(request, pk):
 
     comment_form = CommentForm()
     comments = Comment.objects.filter(post=post)
+
     if request.method == 'POST':
         comment_form = CommentForm(request.POST)
         if comment_form.is_valid():
             comment = Comment(name=request.user,
                               comment=request.POST['comment'], post=post)
             comment.save()
-            return redirect('posts:all_posts')
+            return redirect('posts:post_show', post.id)
 
     context = {'post': post, 'comments': comments,
                'comment_form': comment_form, }

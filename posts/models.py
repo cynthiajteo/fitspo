@@ -42,6 +42,7 @@ class Like(models.Model):
         User, related_name="users_likes", on_delete=models.CASCADE)
     post = models.ForeignKey(
         Post, related_name="users_posts", on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
 
 
 class Comment(models.Model):
@@ -54,6 +55,7 @@ class Comment(models.Model):
     comment = models.TextField(null=False)
     post = models.ForeignKey(Post,
                              on_delete=models.CASCADE, related_name='post_comments')
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def serialize(self):
         return {

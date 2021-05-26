@@ -117,7 +117,7 @@ def views_create_comment(request, pk):
         return redirect('posts:all_posts')
 
     comment_form = CommentForm()
-    comments = Comment.objects.filter(post=post)
+    comments = Comment.objects.filter(post=post).order_by('-created_at')
 
     if request.method == 'POST':
         comment_form = CommentForm(request.POST)

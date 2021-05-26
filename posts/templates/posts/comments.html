@@ -4,10 +4,17 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4">
-            {{post.name}}
+            <a class="index-user" aria-current="page"
+                href="{% url 'accounts:other_profile_show' user_id=post.name_id %}">{{post.name}}
+            </a>
             <img src="{{post.image.url}}" class="index-image" />
             <div class="workout-show">
-                {{post.workout}}
+                <a href="{% url 'posts:post_show' post.id %}" class="text-decoration-none">
+                    <p class="text-capitalize">
+                        {{post.workout}}
+
+                    </p>
+                </a>
             </div>
         </div>
 

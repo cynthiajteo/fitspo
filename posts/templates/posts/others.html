@@ -2,9 +2,8 @@
 
 {% block body %}
 <div class="text-center">
-    <a class="nav-link active" aria-current="page" href="{% url 'accounts:other_profile_show' user_id=post.name_id %}">
-        <p class='username'>{{post.name}}</p>
-
+    <a class="index-user" aria-current="page"
+        href="{% url 'accounts:other_profile_show' user_id=post.name_id %}">{{post.name}}
     </a>
 </div>
 

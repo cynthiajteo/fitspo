@@ -12,9 +12,10 @@ Only Admins can see this
             {% for post in posts %}
             <div class="col-md-4">
                 <div class="card">
-                    <a class="nav-link active" aria-current="page"
+                    <a class="index-user" aria-current="page"
                         href="{% url 'accounts:other_profile_show' user_id=post.name_id %}">
                         <p class='username'>{{post.name}}</p>
+
                     </a>
 
 

@@ -77,9 +77,11 @@ def view_post(request, pk):
 def view_show_post(request, pk):
     try:
         post = Post.objects.get(pk=pk)
+
     except Post.DoesNotExist:
         return redirect('posts:all_posts')
 
+    comments = Comment.objects.filter(post=post)
     if request.user == post.name:
         if request.GET.get('action') == 'del':
             post.delete()
@@ -92,7 +94,8 @@ def view_show_post(request, pk):
                 form.save()
                 return redirect('posts:all_posts')
 
-            context = {'post': post, 'edit': True, 'form': form}
+            context = {'post': post, 'comments': comments,
+                       'edit': True, 'form': form}
             return render(request, 'posts/edit.html', context)
     else:
         if request.user.is_superuser:
@@ -100,30 +103,32 @@ def view_show_post(request, pk):
                 post.delete()
                 return redirect('posts:all_posts')
 
-        context = {"post": post, "edit": False}
+        context = {"post": post, 'comments': comments, "edit": False}
         return render(request, 'posts/others.html', context)
 
-    context = {"post": post, "edit": False}
+    context = {"post": post, 'comments': comments, "edit": False}
     return render(request, 'posts/show.html', context)
 
 
-# create comment
 @login_required
 def views_create_comment(request, pk):
     try:
         post = Post.objects.get(pk=pk)
     except Post.DoesNotExist:
         return redirect('posts:all_posts')
+
     comment_form = CommentForm()
+    comments = Comment.objects.filter(post=post)
     if request.method == 'POST':
         comment_form = CommentForm(request.POST)
-
         if comment_form.is_valid():
             comment = Comment(name=request.user,
                               comment=request.POST['comment'], post=post)
             comment.save()
-            return redirect('posts:post_show', post.id)
-    context = {'comment_form': comment_form, 'post': post}
+            return redirect('posts:all_posts')
+
+    context = {'post': post, 'comments': comments,
+               'comment_form': comment_form, }
     return render(request, 'posts/comments.html', context)
 
 

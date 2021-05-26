@@ -7,8 +7,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-9">
-
+        <div class="col-md-4">
             <img src="{{post.image.url}}" class="index-image" />
             <div class="workout-show">
                 {{post.workout}}
@@ -16,15 +15,27 @@
             {% if request.user.is_superuser %}
             <a href="{% url 'posts:post_show' post.id %}?action=del">Delete</a>
             {% endif %}
-        </div>
-        <br />
-        <div class="comment-container">
-            this is the comments section
             <br />
-            insert comments here
-            <br />
-            others.html
         </div>
+
+        <div class="col-md-4">
+            {% for comment in comments %}
+
+            <p class="comment-text">
+                COMMENT: {{comment.comment}}
+            </p>
+            <p class="commenter">USER:
+                {{comment.name}}
+            </p>
+            <br />
+            {% endfor %}
+            <a class="nav-link active" aria-current="page" href="{% url 'posts:comment_create' post.id %}">
+                <p class='comment'>comment</p>
+            </a>
+        </div>
+
+
     </div>
+</div>
 </div>
 {% endblock body %}

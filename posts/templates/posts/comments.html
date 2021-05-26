@@ -1,6 +1,6 @@
 {% extends 'posts/base.html' %}
-
 {% block body %}
+
 <div class="container">
     <div class="row">
         <div class="col-md-4">
@@ -11,29 +11,41 @@
             </div>
         </div>
 
+
         <div class="col-md-4">
-            <div class="comment-container">
+            {% for comment in comments %}
 
-                {% comment %} <form action="{% url 'posts:comment_create' post.id %}" method="post">
-                    {% endcomment %}
-                    <form action="#" method="post">
-                        {% csrf_token %}
-                        {% for field in comment_form %}
-                        <div class="row mb-3">
+            <p class="comment-text">
+                COMMENT: {{comment.comment}}
+            </p>
+            <p class="commenter">USER:
+                {{comment.name}}
+            </p>
+            <br />
+            {% endfor %}
 
-                            {{field.label_tag}}
-                            {{field}}
-                            <div class="text-danger">
-                                {{field.errors}}
-                                {{ form.non_field_errors }}
-                            </div>
-                            {% if field.help_text %}
-                            <p class="help">{{ field.help_text|safe }}</p>
-                            {% endif %}
+        </div>
+
+        <div class="col-md-4">
+            <div class="comment-form">
+                <form action="{% url 'posts:comment_create' post.id %}" method="post">
+                    {% csrf_token %}
+                    {% for field in comment_form %}
+                    <div class="row mb-3">
+
+                        {{field.label_tag}}
+                        {{field}}
+                        <div class="text-danger">
+                            {{field.errors}}
+                            {{ form.non_field_errors }}
                         </div>
-                        {% endfor %}
-                        <button>Send Comment</button>
-                    </form>
+                        {% if field.help_text %}
+                        <p class="help">{{ field.help_text|safe }}</p>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                    <button>Send Comment</button>
+                </form>
             </div>
         </div>
     </div>

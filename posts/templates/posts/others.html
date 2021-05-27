@@ -14,24 +14,26 @@
             <div class="workout-show">
                 {{post.workout}}
             </div>
-            {% if request.user.is_superuser %}
-            <a href="{% url 'posts:post_show' post.id %}?action=del">Delete</a>
-            {% endif %}
-            <br />
+
+            <div class="action-btn">
+                {% if request.user.is_superuser %}
+                <a href="{% url 'posts:post_show' post.id %}?action=del">Delete</a>
+                {% endif %}
+                <a class="btn btn-primary btn-sm" aria-current="page" href="{% url 'posts:comment_create' post.id %}">
+                    Comment </a>
+            </div>
         </div>
 
         <div class="col-md-8 comments rounded">
             {% for comment in comments %}
-
+            <br />
             <p class="comment-text">
                 <span id="commenter">{{comment.name}}: </span> {{comment.comment}}
             </p>
 
             <hr />
             {% endfor %}
-            <a class="nav-link active" aria-current="page" href="{% url 'posts:comment_create' post.id %}">
-                <p class='comment'>comment</p>
-            </a>
+
         </div>
 
 

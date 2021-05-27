@@ -17,6 +17,10 @@ body {
     padding: 10px;
 }
 
+.logo {
+    max-width: 30px;
+}
+
 .reg-title,
 .login-title {
     text-align: center;

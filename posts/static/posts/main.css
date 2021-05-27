@@ -6,6 +6,10 @@ body {
     background-color: rgb(205, 221, 252);
 }
 
+.logo {
+    max-width: 30px;
+}
+
 .container {
     display: flex;
 }
@@ -29,6 +33,11 @@ body {
 .row {
     width: 100%;
     justify-content: space-evenly;
+}
+
+.row.gy-2 {
+    width: 100%;
+    justify-content: space-between;
 }
 
 .card {
@@ -79,4 +88,8 @@ a {
 
 #commenter {
     color: rgb(55, 81, 194);
+}
+
+.workout-show {
+    height: 57%;
 }

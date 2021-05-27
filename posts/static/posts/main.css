@@ -97,3 +97,16 @@ a {
 .workout-show {
     height: 57%;
 }
+
+.comment-form {
+    max-height: 100%;
+    justify-content: space-evenly;
+}
+
+.comment-box {
+    height: 450px;
+}
+
+#id_comment {
+    height: 400px;
+}

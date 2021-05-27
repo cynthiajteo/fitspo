@@ -32,6 +32,11 @@
             </p>
             <p class="date-text">{{comment.created_at|date:'d M Y' }}</p>
             <hr />
+            {% empty %}
+
+            <div class="alert alert-warning">
+                No Comments
+            </div>
             {% endfor %}
 
         </div>

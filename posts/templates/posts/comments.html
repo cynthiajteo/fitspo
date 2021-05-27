@@ -1,35 +1,32 @@
 {% extends 'posts/base.html' %}
 {% block body %}
+<div class="text-center">
+    <a class="index-user" aria-current="page"
+        href="{% url 'accounts:other_profile_show' user_id=post.name_id %}">{{post.name}}
+    </a>
+</div>
 
 <div class="container">
     <div class="row">
         <div class="col-md-4">
-            <a class="index-user" aria-current="page"
-                href="{% url 'accounts:other_profile_show' user_id=post.name_id %}">{{post.name}}
-            </a>
             <img src="{{post.image.url}}" class="index-image" />
-
             <div class="workout-show">
                 <a href="{% url 'posts:post_show' post.id %}" class="text-decoration-none">
                     <p class="text-capitalize">
-                        {{post.workout}}
-
-                    </p>
+                        {{post.workout}}</p>
                 </a>
             </div>
         </div>
 
-
         <div class="col-md-4 comments rounded">
             {% for comment in comments %}
-
+            <br />
             <p class="comment-text">
                 <span id="commenter">{{comment.name}}: </span> {{comment.comment}}
             </p>
-
+            <p class="date-text">{{comment.created_at|date:'d M Y' }}</p>
             <hr />
             {% endfor %}
-
         </div>
 
         <div class="col-md-4">
@@ -37,7 +34,7 @@
                 <form action="{% url 'posts:comment_create' post.id %}" method="post">
                     {% csrf_token %}
                     {% for field in comment_form %}
-                    <div class="row mb-3">
+                    <div class="row mb-3 comment-box">
 
                         {{field.label_tag}}
                         {{field}}
@@ -50,7 +47,7 @@
                         {% endif %}
                     </div>
                     {% endfor %}
-                    <button>Send Comment</button>
+                    <button class="btn btn-primary btn-sm">Comment</button>
                 </form>
             </div>
         </div>

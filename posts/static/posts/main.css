@@ -90,6 +90,10 @@ a {
     color: rgb(55, 81, 194);
 }
 
+.comment-time {
+    text-align: end;
+}
+
 .workout-show {
     height: 57%;
 }

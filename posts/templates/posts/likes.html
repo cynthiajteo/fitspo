@@ -4,6 +4,46 @@
 <div class="text-center">
     <h1> {{user.username}} </h1>
 </div>
-hihi
+<div class="col-md-9">
+    <div class="row ">
+
+        {% for like in likes %}
+
+        <div class="col-md-4">
+            <div class="card">
+                <a class="index-user" aria-current="page"
+                    href="{% url 'accounts:other_profile_show' like.post.name.id %}">
+                    <p class='username'>{{like.post.name}}</p>
+                </a>
+                {% if like.post.image  %}
+                <img src="{{like.post.image.url}}" class="index-image" />
+                {% endif %}
+
+                <div class="card-body">
+
+                    <a href="{% url 'posts:post_show' like.post.id %}" class="text-decoration-none">
+                        <p class="text-capitalize">
+                            {{like.post.workout}}
+
+                        </p>
+                    </a>
+                    <p class="date-text"> {{post.created_at|date:'d M Y' }}</p>
+                    <div class="text-center profile">
+                        <a class="btn btn-primary btn-sm"
+                            href="{% url 'posts:comment_create' like.post.id %}">Comment</a>
+
+                        <a class="card-link btn btn-primary btn-sm" href=#>&#9829;</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="alert alert-warning">
+            Like Something!
+        </div>
+        {% endfor %}
+    </div>
+</div>
 
 {% endblock body %}

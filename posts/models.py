@@ -51,7 +51,8 @@ class Like(models.Model):
                 'username': self.user.username,
                 'post': {
                     'image': self.post.image,
-                    'workout': self.post.workout
+                    'workout': self.post.workout,
+                    'name': self.post.name.id
 
                 }
             }

@@ -134,32 +134,21 @@ def views_create_comment(request, pk):
     return render(request, 'posts/comments.html', context)
 
 
-# user's likes page
-@login_required
-def view_likes(request):
-    try:
-        user = User.objects.filter(pk=request.user.id).first()
-    except User.DoesNotExist:
-        return redirect('posts:all_posts')
-
-    likes = Like.objects.filter(user=request.user.id).order_by('-created_at')
-    context = {'likes': likes}
-    return render(request, 'posts/likes.html', context)
-
-
 # like button
 @login_required
 def view_like(request, pk):
     if request.method == 'POST':
         post = Post.objects.get(pk=pk)
         if Like.objects.filter(user_id=request.user.id, post=post).exists():
-            like = Like.objects.get(post=pk)
-            if Like.objects.filter(liked=True):
-                like.liked = False
-                like.save()
+            like = Like.objects.get(user_id=request.user.id, post=post)
+
+            if Like.objects.filter(liked=False, post=post, user_id=request.user.id):
+                Like.objects.filter(liked=False, post=post,
+                                    user_id=request.user.id).update(liked=True)
                 return redirect('posts:all_posts')
-            else:
-                like.liked = True
+
+            elif Like.objects.filter(liked=True):
+                like.liked = False
                 like.save()
                 return redirect('posts:all_posts')
         else:
@@ -167,3 +156,17 @@ def view_like(request, pk):
                 user_id=request.user.id, post=post, liked=True)
             like.save()
             return redirect('posts:all_posts')
+
+
+# user's likes page
+@login_required
+def view_user_likes(request):
+    try:
+        user = User.objects.filter(pk=request.user.id).first()
+    except User.DoesNotExist:
+        return redirect('posts:all_posts')
+    post = Post.objects.all()
+    likes = Like.objects.filter(
+        user=request.user.id, liked=True).order_by('-created_at')
+    context = {'likes': likes, 'post': post}
+    return render(request, 'posts/likes.html', context)

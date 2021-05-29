@@ -49,15 +49,24 @@ def views_login(request):
         password = request.POST['password']
 
         user = authenticate(request, username=username, password=password)
+        # wrong username
+        try:
+            username = User.objects.get(username=username)
+        except User.DoesNotExist:
+            messages.error(request, "user not found")
+            return render(request, 'accounts/login.html')
+
+        # wrong password
+        try:
+            password = User.objects.get(password=password)
+        except User.DoesNotExist:
+            messages.error(request, "incorrect password")
+            return render(request, 'accounts/login.html')
 
         # if user is not empty, then login
         if user is not None and user.is_active:
             login(request, user)
             return redirect("posts:all_posts")
-        else:
-            messages.error(
-                request, "username or password is incorrect, try again")
-            return render(request, "accounts/login.html")
 
     return render(request, "accounts/login.html")
 

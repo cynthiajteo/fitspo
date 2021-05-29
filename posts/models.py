@@ -44,6 +44,22 @@ class Like(models.Model):
         Post, related_name="users_posts", on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    def serialize(self):
+        return{
+            'id': self.id,
+            'user': {
+                'username': self.user.username,
+                'post': {
+                    'image': self.post.image,
+                    'workout': self.post.workout
+
+                }
+            }
+        }
+
+    def get_absolute_url(self):
+        return reverse("post_like", kwargs={"pk": self.pk, "post.id": self.post.id, "user.id": self.user.id})
+
 
 class Comment(models.Model):
     id = models.UUIDField(  # new

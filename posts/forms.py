@@ -49,4 +49,4 @@ class LikeForm(forms.ModelForm):
     class Meta:
         model = Like
         fields = '__all__'
-        exclude = ('user', 'post',)
+        # exclude = ('user', 'post',)

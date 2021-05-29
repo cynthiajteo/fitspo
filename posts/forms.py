@@ -1,5 +1,5 @@
 from django import forms
-from django.forms import widgets
+# from django.forms import widgets
 from .models import *
 
 
@@ -41,3 +41,12 @@ class CommentForm(forms.ModelForm):
                 'class': 'form-control',
                 'placeholder': 'comment'})
         }
+
+
+class LikeForm(forms.ModelForm):
+    liked = forms.BooleanField(label='like')
+
+    class Meta:
+        model = Like
+        fields = '__all__'
+        exclude = ('user', 'post',)

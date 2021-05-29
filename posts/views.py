@@ -108,6 +108,8 @@ def view_show_post(request, pk):
     context = {"post": post, 'comments': comments, "edit": False}
     return render(request, 'posts/show.html', context)
 
+# create comment
+
 
 @login_required
 def views_create_comment(request, pk):
@@ -131,6 +133,27 @@ def views_create_comment(request, pk):
                'comment_form': comment_form, }
     return render(request, 'posts/comments.html', context)
 
+
+# toggle like button
+# @login_required
+# def view_like(request, pk):
+#     try:
+#         post = Post.objects.get(pk=pk)
+#     except Post.DoesNotExist:
+#         return redirect('posts:all_posts')
+
+#     like_form = LikeForm()
+
+#     if request.method == 'POST':
+#         like_form = LikeForm(request.POST)
+#         if like_form.is_valid():
+#             liked = Like(user=request.user, post=post,
+#                          liked=request.POST['liked'])
+#             liked.save()
+#             return redirect('posts:all_posts', post.id)
+
+#     context = {'post': post, 'like_form': like_form}
+#     return render(request, 'posts/index.html', context)
 
 # toggle like button
 # @login_required

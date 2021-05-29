@@ -6,10 +6,6 @@ body {
     background-color: rgb(205, 221, 252);
 }
 
-.logo {
-    max-width: 30px;
-}
-
 .container {
     display: flex;
 }
@@ -109,4 +105,15 @@ a {
 
 #id_comment {
     height: 400px;
+}
+
+.logout,
+.like-icon,
+.profile-icon,
+.create-icon {
+    width: 22px;
+}
+
+.logo {
+    width: 28px;
 }

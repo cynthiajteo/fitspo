@@ -148,13 +148,22 @@ def view_likes(request):
 
 
 # like button
-# need to figure how to avoid duplicate likes on 1 post
 @login_required
 def view_like(request, pk):
     if request.method == 'POST':
         post = Post.objects.get(pk=pk)
-
-        like = Like.objects.create(
-            user_id=request.user.id, post=post, liked=True)
-        like.save()
-        return redirect('posts:all_posts')
+        if Like.objects.filter(user_id=request.user.id, post=post).exists():
+            like = Like.objects.get(post=pk)
+            if Like.objects.filter(liked=True):
+                like.liked = False
+                like.save()
+                return redirect('posts:all_posts')
+            else:
+                like.liked = True
+                like.save()
+                return redirect('posts:all_posts')
+        else:
+            like = Like.objects.create(
+                user_id=request.user.id, post=post, liked=True)
+            like.save()
+            return redirect('posts:all_posts')

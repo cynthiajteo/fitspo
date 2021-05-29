@@ -20,7 +20,7 @@ def views_register(request):
         password_confirm = request.POST['password_confirm']
 
         if password != password_confirm:
-            messages.error(request, "password is not a match")
+            messages.error(request, "Password is not a match")
             return render(request, "accounts/register.html")
 
         try:
@@ -31,7 +31,7 @@ def views_register(request):
             profile = Profile(user=user)
             profile.save()
         except IntegrityError:
-            messages.error(request, "Username is taken already")
+            messages.error(request, "Username is taken")
             return render(request, 'accounts/register.html')
 
         login(request, user)
@@ -56,18 +56,14 @@ def views_login(request):
             messages.error(request, "user not found")
             return render(request, 'accounts/login.html')
 
-        # wrong password
-        try:
-            password = User.objects.get(password=password)
-        except User.DoesNotExist:
-            messages.error(request, "incorrect password")
-            return render(request, 'accounts/login.html')
-
-        # if user is not empty, then login
+        # if user exists is active
         if user is not None and user.is_active:
             login(request, user)
             return redirect("posts:all_posts")
-
+        else:
+            # wrong password
+            messages.error(
+                request, "password is incorrect, try again")
     return render(request, "accounts/login.html")
 
 

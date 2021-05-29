@@ -33,7 +33,7 @@ body {
 
 .row.gy-2 {
     width: 100%;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .card {
@@ -135,4 +135,11 @@ a {
     width: 100%;
     text-align: center;
     font-size: 12px;
+}
+
+.unlike-btn {
+    background-color: transparent;
+    border-style: none;
+    margin-top: 3px;
+    margin-right: 5px;
 }

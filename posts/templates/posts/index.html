@@ -5,7 +5,6 @@
 <div class="container">
     <div class="col-md-9">
         <div class="row gy-2">
-
             {% for post in posts %}
             <div class="col-md-4">
                 <div class="card">
@@ -13,7 +12,6 @@
                         href="{% url 'accounts:other_profile_show' user_id=post.name_id %}">
                         <p class='username'>{{post.name}}</p>
                     </a>
-
                     {% if post.image %}
                     <img src="{{post.image.url}}" class="index-image" />
                     {% endif %}
@@ -34,8 +32,7 @@
                             <form action="{% url 'posts:post_like' post.id %}" method="post" class='like-form'>
                                 {% csrf_token %}
                                 {%for field in like_form%}
-                                <div class="row mb-3 comment-box">
-
+                                <div class="row mb-3">
                                     {{field.label_tag}}
                                     {{field}}
                                     <div class="text-danger">
@@ -51,9 +48,7 @@
                                         src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNDEyLjczNSA0MTIuNzM1IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA0MTIuNzM1IDQxMi43MzU7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxnPg0KCQk8cGF0aCBkPSJNMjk1LjcwNiwzNS41MjJDMjk1LjcwNiwzNS41MjIsMjk1LjcwNiwzNS41MjIsMjk1LjcwNiwzNS41MjJjLTM0LjQzLTAuMTg0LTY3LjE2MSwxNC45MzctODkuMzM5LDQxLjI3Mw0KCQkJYy0yMi4wMzktMjYuNTE2LTU0Ljg2MS00MS42OC04OS4zMzktNDEuMjczQzUyLjM5NSwzNS41MjIsMCw4Ny45MTcsMCwxNTIuNTVDMCwyNjMuMzEsMTkzLjMwNiwzNzEuNDU2LDIwMS4xNDMsMzc1LjYzNg0KCQkJYzMuMTYyLDIuMTEzLDcuMjg2LDIuMTEzLDEwLjQ0OSwwYzcuODM3LTQuMTgsMjAxLjE0My0xMTAuNzU5LDIwMS4xNDMtMjIzLjA4NkM0MTIuNzM1LDg3LjkxNywzNjAuMzM5LDM1LjUyMiwyOTUuNzA2LDM1LjUyMnoNCgkJCSBNMjA2LjM2NywzNTQuNzM4QzE3Ni4wNjUsMzM2Ljk3NSwyMC44OTgsMjQyLjQxMiwyMC44OTgsMTUyLjU1YzAtNTMuMDkxLDQzLjAzOS05Ni4xMzEsOTYuMTMxLTk2LjEzMQ0KCQkJYzMyLjUxMi0wLjQyNyw2Mi45MzgsMTUuOTcyLDgwLjQ1Nyw0My4zNjNjMy41NTcsNC45MDUsMTAuNDE4LDUuOTk4LDE1LjMyMywyLjQ0YzAuOTM3LTAuNjgsMS43NjEtMS41MDMsMi40NC0yLjQ0DQoJCQljMjkuMDU1LTQ0LjQzNSw4OC42MzEtNTYuOTAzLDEzMy4wNjYtMjcuODQ4YzI3LjIwMiwxNy43ODcsNDMuNTc1LDQ4LjExNCw0My41MjEsODAuNjE1DQoJCQlDMzkxLjgzNywyNDMuNDU2LDIzNi42NjksMzM3LjQ5NywyMDYuMzY3LDM1NC43Mzh6Ii8+DQoJPC9nPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPC9zdmc+DQo="
                                         class="like-icon" /></button>
                             </form>
-
                         </div>
-
                     </div>
                 </div>
             </div>

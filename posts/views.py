@@ -1,3 +1,4 @@
+from django.contrib.auth import login
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import *
@@ -9,7 +10,8 @@ from .forms import *
 @login_required
 def view_index(request):
     posts = Post.objects.filter(hidden=False).order_by('-created_at')
-    context = {'posts': posts}
+    liked = Like.objects.all()
+    context = {'posts': posts, 'liked': liked}
     return render(request, 'posts/index.html', context)
 
 
@@ -108,9 +110,8 @@ def view_show_post(request, pk):
     context = {"post": post, 'comments': comments, "edit": False}
     return render(request, 'posts/show.html', context)
 
+
 # create comment
-
-
 @login_required
 def views_create_comment(request, pk):
     try:
@@ -134,32 +135,39 @@ def views_create_comment(request, pk):
     return render(request, 'posts/comments.html', context)
 
 
-# toggle like button
-# @login_required
-# def view_like(request, pk):
-#     try:
-#         post = Post.objects.get(pk=pk)
-#     except Post.DoesNotExist:
-#         return redirect('posts:all_posts')
+# like button
+@login_required
+def view_like(request, pk):
+    if request.method == 'POST':
+        post = Post.objects.get(pk=pk)
+        if Like.objects.filter(user_id=request.user.id, post=post).exists():
+            like = Like.objects.get(user_id=request.user.id, post=post)
 
-#     like_form = LikeForm()
+            if Like.objects.filter(liked=False, post=post, user_id=request.user.id):
+                Like.objects.filter(liked=False, post=post,
+                                    user_id=request.user.id).update(liked=True)
+                return redirect('posts:all_posts')
 
-#     if request.method == 'POST':
-#         like_form = LikeForm(request.POST)
-#         if like_form.is_valid():
-#             liked = Like(user=request.user, post=post,
-#                          liked=request.POST['liked'])
-#             liked.save()
-#             return redirect('posts:all_posts', post.id)
+            elif Like.objects.filter(liked=True):
+                like.liked = False
+                like.save()
+                return redirect('posts:all_posts')
+        else:
+            like = Like.objects.create(
+                user_id=request.user.id, post=post, liked=True)
+            like.save()
+            return redirect('posts:all_posts')
 
-#     context = {'post': post, 'like_form': like_form}
-#     return render(request, 'posts/index.html', context)
 
-# toggle like button
-# @login_required
-# def view_like(request, pk):
-#     post = Post.objects.get(pk=pk)
-#     like = Like.objects.get(post=pk)
-#     like.liked = request.POST['liked'] == 'true'
-#     like.save()
-#     return render(request, 'posts:all_posts')
+# user's likes page
+@login_required
+def view_user_likes(request):
+    try:
+        user = User.objects.filter(pk=request.user.id).first()
+    except User.DoesNotExist:
+        return redirect('posts:all_posts')
+    post = Post.objects.all()
+    likes = Like.objects.filter(
+        user=request.user.id, liked=True).order_by('-created_at')
+    context = {'likes': likes, 'post': post}
+    return render(request, 'posts/likes.html', context)

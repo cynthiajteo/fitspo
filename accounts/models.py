@@ -20,7 +20,7 @@ class Profile(models.Model):
         User, related_name='profile', on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.user
+        return self.user.username
 
     def get_absolute_url(self):
         return reverse("profile_show", "other_profile_show", kwargs={"pk": self.pk, 'user.id': self.user.id})

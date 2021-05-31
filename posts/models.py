@@ -24,6 +24,7 @@ class Post(models.Model):
             "id": self.id,
             "user": {
                 "username": self.name.username,
+                'id': self.name.id
             }
         }
 
@@ -49,7 +50,9 @@ class Like(models.Model):
             'id': self.id,
             'user': {
                 'username': self.user.username,
+                'id': self.user.id,
                 'post': {
+                    'id': self.post.id,
                     'image': self.post.image,
                     'workout': self.post.workout,
                     'name': self.post.name.id

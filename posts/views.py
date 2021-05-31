@@ -14,7 +14,14 @@ def view_index(request):
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     liked = Like.objects.all()
-    context = {'posts': posts, 'liked': liked, 'page_obj': page_obj}
+    # count = Post.objects.count()
+    # if request.GET.get('likedbtn'):
+
+    #     liked = Like.objects.filter(like__post =
+    #         user_id=request.user, liked=True)
+
+    context = {'posts': posts, 'liked': liked,
+               'page_obj': page_obj}
     return render(request, 'posts/index.html', context)
 
 

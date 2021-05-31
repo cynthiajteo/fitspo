@@ -1,17 +1,22 @@
-from django.contrib.auth import login
+# from django.contrib.auth import login
+from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 from .models import *
 from .forms import *
+
+
 # Create your views here.
-
-
 # shows all posts on main page
 @login_required
 def view_index(request):
     posts = Post.objects.filter(hidden=False).order_by('-created_at')
+    paginator = Paginator(posts, 8)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
     liked = Like.objects.all()
-    context = {'posts': posts, 'liked': liked}
+    context = {'posts': posts, 'liked': liked, 'page_obj': page_obj}
     return render(request, 'posts/index.html', context)
 
 

@@ -6,10 +6,9 @@
 </div>
 
 <div class="container">
-
     <div class="col-md-9">
         <div class="row gy-2">
-            {% for post in posts %}
+            {% for post in page_obj %}
             <div class="col-md-4">
                 <div class="card">
 
@@ -62,6 +61,23 @@
                 Post Something!
             </div>
             {% endfor %}
+            <div class="pagination">
+                <span class="step-links">
+                    {% if page_obj.has_previous %}
+                    <a href="?page=1">&laquo; first</a>
+                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                    {% endif %}
+
+                    <span class="current">
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                    </span>
+
+                    {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">Next 8 </a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
         </div>
     </div>
 

@@ -1,8 +1,6 @@
-# from django.contrib.auth import login
 from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from django.db.models import Q
 from .models import *
 from .forms import *
 
@@ -174,5 +172,8 @@ def view_user_likes(request):
     post = Post.objects.all()
     likes = Like.objects.filter(
         user=request.user.id, liked=True).order_by('-created_at')
-    context = {'likes': likes, 'post': post}
+    paginator = Paginator(likes, 8)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    context = {'likes': likes, 'post': post, 'page_obj': page_obj}
     return render(request, 'posts/likes.html', context)

@@ -13,20 +13,17 @@ def view_index(request):
     paginator = Paginator(posts, 8)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    liked = Like.objects.all()
-    # count = Post.objects.count()
-    # if request.GET.get('likedbtn'):
 
-    #     liked = Like.objects.filter(like__post =
-    #         user_id=request.user, liked=True)
-
-    context = {'posts': posts, 'liked': liked,
+    allLikes = Like.objects.filter(liked=True)
+    userLikes = Like.objects.filter(liked=True, user_id=request.user)
+    print(userLikes)
+    context = {'posts': posts, 'userLikes': userLikes, 'allLikes': allLikes,
                'page_obj': page_obj}
     return render(request, 'posts/index.html', context)
 
 
 # create new post
-@login_required
+@ login_required
 def view_create(request):
     form = PostForm()
     if request.method == 'POST':
@@ -46,7 +43,7 @@ def view_create(request):
 
 
 # edit form
-@login_required
+@ login_required
 def view_post(request, pk):
     try:
         post = Post.objects.get(pk=pk)
@@ -85,7 +82,7 @@ def view_post(request, pk):
 
 
 # show post
-@login_required
+@ login_required
 def view_show_post(request, pk):
     try:
         post = Post.objects.get(pk=pk)
@@ -122,7 +119,7 @@ def view_show_post(request, pk):
 
 
 # create comment
-@login_required
+@ login_required
 def views_create_comment(request, pk):
     try:
         post = Post.objects.get(pk=pk)
@@ -146,7 +143,7 @@ def views_create_comment(request, pk):
 
 
 # like button
-@login_required
+@ login_required
 def view_like(request, pk):
     if request.method == 'POST':
         post = Post.objects.get(pk=pk)

@@ -1,15 +1,15 @@
 {% extends 'posts/base.html' %}
 {% block body %}
 <div class="text-center">
-    <a class="index-user" aria-current="page"
-        href="{% url 'accounts:other_profile_show' user_id=post.name_id %}">{{post.name}}
-    </a>
+    <h1> <a class="index-user" aria-current="page"
+            href="{% url 'accounts:other_profile_show' user_id=post.name_id %}">{{post.name}}
+        </a></h1>
 </div>
 
 <div class="container">
     <div class="row">
         <div class="col-md-4">
-            <img src="{{post.image.url}}" class="index-image" />
+            <img src="{{post.image.url}}" class="index-image" /><br /><br />
             <div class="workout-show">
                 <a href="{% url 'posts:post_show' post.id %}" class="text-decoration-none">
                     <p class="text-capitalize">
@@ -18,14 +18,18 @@
             </div>
         </div>
 
-        <div class="col-md-4 comments rounded">
+        <div class="col-md-5 comments rounded">
             {% for comment in comments %}
             <br />
             <p class="comment-text">
                 <span id="commenter">{{comment.name}}: </span> {{comment.comment}}
             </p>
             <p class="date-text">{{comment.created_at|date:'d M Y' }}</p>
-            <hr />
+            {% empty %}
+            <br />
+            <div class="empty alert alert-light" role="alert">
+                No Comments Yet
+            </div>
             {% endfor %}
         </div>
 

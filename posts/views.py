@@ -3,10 +3,20 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import *
 from .forms import *
+from django import template
+
+register = template.Library()
+
+
+@register.filter(name='split')
+def split(value, key):
+    return value.split(key)
 
 
 # Create your views here.
 # shows all posts on main page
+
+
 @login_required
 def view_index(request):
     posts = Post.objects.filter(hidden=False).order_by('-created_at')

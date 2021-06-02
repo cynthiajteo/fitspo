@@ -76,6 +76,7 @@ class Comment(models.Model):
     post = models.ForeignKey(Post,
                              on_delete=models.CASCADE, related_name='post_comments')
     created_at = models.DateTimeField(auto_now_add=True)
+    hidden = models.BooleanField(default=False)
 
     def serialize(self):
         return {

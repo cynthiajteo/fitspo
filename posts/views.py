@@ -16,14 +16,16 @@ def view_index(request):
 
     allLikes = Like.objects.filter(liked=True)
     userLikes = Like.objects.filter(liked=True, user_id=request.user)
-    print(userLikes)
-    context = {'posts': posts, 'userLikes': userLikes, 'allLikes': allLikes,
+    countLikes = Like.objects.filter(liked=True, user_id=request.user).count
+
+    context = {'posts': posts, 'userLikes': userLikes, 'allLikes': allLikes, 'countLikes': countLikes,
                'page_obj': page_obj}
+
     return render(request, 'posts/index.html', context)
 
 
 # create new post
-@ login_required
+@login_required
 def view_create(request):
     form = PostForm()
     if request.method == 'POST':
@@ -43,7 +45,7 @@ def view_create(request):
 
 
 # edit form
-@ login_required
+@login_required
 def view_post(request, pk):
     try:
         post = Post.objects.get(pk=pk)
@@ -119,7 +121,7 @@ def view_show_post(request, pk):
 
 
 # create comment
-@ login_required
+@login_required
 def views_create_comment(request, pk):
     try:
         post = Post.objects.get(pk=pk)
@@ -143,7 +145,7 @@ def views_create_comment(request, pk):
 
 
 # like button
-@ login_required
+@login_required
 def view_like(request, pk):
     if request.method == 'POST':
         post = Post.objects.get(pk=pk)

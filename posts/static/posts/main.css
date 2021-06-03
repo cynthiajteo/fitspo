@@ -98,7 +98,7 @@ body {
 
 .text-center {
     width: 100%;
-    height: 40%;
+    height: 10%;
 }
 
 .like-form {
@@ -164,7 +164,8 @@ a {
 .like-icon,
 .profile-icon,
 .create-icon,
-.comment-icon {
+.comment-icon,
+.search-icon {
     width: 22px;
 }
 
@@ -200,4 +201,26 @@ a {
 
 .hide-text {
     display: none;
+}
+
+.search-btn {
+    background-color: transparent;
+    border: none;
+}
+
+.input-group.rounded {
+    width: 12em;
+    margin-left: 112em;
+}
+
+.previous {
+    margin-left: 1em;
+}
+
+.current {
+    margin: 0 auto;
+}
+
+.next {
+    margin-right: 1em;
 }

@@ -18,10 +18,6 @@
                         {{workout}}</li>{%endfor%}
                 </ul>
             </div>
-
-            {% if request.user.is_superuser %}
-            <a href="{% url 'posts:post_show' post.id %}?action=del">Delete</a>
-            {% endif %}
         </div>
 
         {% if edit %}
@@ -31,7 +27,7 @@
 
                 {{form.as_p}}
 
-                <button>Save Changes</button>
+                <button class="btn btn-primary">Save Changes</button>
             </form>
 
         </div>

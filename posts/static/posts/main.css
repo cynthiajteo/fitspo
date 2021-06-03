@@ -3,7 +3,16 @@
 body {
     font-family: 'Yanone Kaffeesatz', sans-serif;
     font-size: 18px;
-    background-color: rgb(205, 221, 252);
+    background-color: rgb(159, 214, 240);
+    color: rgb(0, 0, 0);
+}
+
+a:link {
+    color: black;
+}
+
+a:hover {
+    color: rgb(48, 86, 143);
 }
 
 .container {
@@ -90,7 +99,7 @@ body {
 }
 
 .date-text {
-    font-size: 14px;
+    font-size: 16px;
     text-align: end;
     margin-top: 0em;
     margin-bottom: 0em;
@@ -173,13 +182,6 @@ a {
     width: 28px;
 }
 
-.footer {
-    margin-top: 5em;
-    width: 100%;
-    text-align: center;
-    font-size: 12px;
-}
-
 .unlike-btn {
     background-color: transparent;
     border-style: none;
@@ -190,13 +192,17 @@ a {
 .action-btn {
     width: 50%;
     margin-top: 1em;
-    margin-left: 91em;
+    margin-left: 90em;
 }
 
 .action-btn-others {
     width: 50%;
     margin-top: 1em;
-    margin-left: 95em;
+    margin-left: 90em;
+}
+
+.btn.btn-primary.btn-sm.delete {
+    background-color: tomato;
 }
 
 .hide-text {

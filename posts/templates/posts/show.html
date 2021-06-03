@@ -45,7 +45,7 @@
                 href="{% url 'posts:comment_create' post.id %}">
                 Comment </a>
             {% if request.user.is_superuser %}
-            <a href="{% url 'posts:post_show' post.id %}?action=del">Delete</a>
+            <a class="btn btn-primary btn-sm delete" href="{% url 'posts:post_show' post.id %}?action=del">Delete</a>
             {% endif %}
         </div>
     </div>

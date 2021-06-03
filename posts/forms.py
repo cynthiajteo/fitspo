@@ -13,7 +13,7 @@ class PostForm(forms.ModelForm):
 
             'workout': forms.Textarea(attrs={
                 'class': 'form-control',
-                'placeholder': 'Your workout'
+                'placeholder': 'Press enter for next set of exercise'
             }),
         }
 

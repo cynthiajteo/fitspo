@@ -47,6 +47,13 @@ body {
     overflow: auto;
 }
 
+.text-capitalize.workout {
+    max-height: 11em;
+    min-height: 11em;
+    margin-left: -0.5em;
+    overflow: auto;
+}
+
 .date-text {
     font-size: 14px;
     text-align: end;
@@ -154,4 +161,8 @@ a {
     width: 50%;
     margin-top: 1em;
     margin-left: 95em;
+}
+
+.hide-text {
+    display: none;
 }

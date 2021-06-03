@@ -20,9 +20,14 @@
 
                     <div class="card-body">
                         <a href="{% url 'posts:post_show' like.post.id %}" class="text-decoration-none">
-                            <p class="text-capitalize">
-                                {{like.post.workout}}
+                            <p class="hide-text">
+                                {{like.post.get_workout}}
                             </p>
+                            <ul class="text-capitalize workout-like">
+                                {%for workout in like.post.get_workout %}
+                                <li>
+                                    {{workout}}</li>{%endfor%}
+                            </ul>
                         </a>
                         <p class="date-text"> {{like.post.created_at|date:'d M Y' }}</p>
 
@@ -76,13 +81,6 @@
                     <a href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>
                     {% endif %}
                 </span>
-            </div>
-
-            <div class="footer">
-                <footer>
-                    <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a
-                            href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
-                </footer>
             </div>
 
         </div>

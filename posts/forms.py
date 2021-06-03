@@ -26,6 +26,14 @@ class EditForm(forms.ModelForm):
         fields = '__all__'
         exclude = ('name',)
 
+        widgets = {
+
+            'workout': forms.Textarea(attrs={
+                'class': 'form-control',
+                'placeholder': 'Press enter for next set of exercise'
+            }),
+        }
+
 
 class CommentForm(forms.ModelForm):
     class Meta:

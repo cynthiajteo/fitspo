@@ -54,6 +54,30 @@ body {
     overflow: auto;
 }
 
+.text-capitalize.workout::-webkit-scrollbar {
+    display: none;
+}
+
+.text-capitalize.workout-profile {
+    max-height: 12.5em;
+    min-height: 12.5em;
+    margin-left: -0.5em;
+    overflow: auto;
+}
+
+.text-capitalize.workout-profile::-webkit-scrollbar {
+    display: none;
+}
+
+.text-capitalize.workout-like {
+    max-height: 11em;
+    min-height: 11em;
+    margin-left: -0.5em;
+    overflow: auto;
+}
+.text-capitalize.workout-like::-webkit-scrollbar {
+    display: none;
+}
 .text-capitalize.workout-show {
     max-height: 15em;
     min-height: 15em;
@@ -62,10 +86,6 @@ body {
 }
 
 .text-capitalize.workout-show::-webkit-scrollbar {
-    display: none;
-}
-
-.text-capitalize.workout::-webkit-scrollbar {
     display: none;
 }
 

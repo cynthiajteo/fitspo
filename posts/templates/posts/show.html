@@ -15,7 +15,7 @@
                 <a href="{% url 'posts:post_show' post.id %}" class="text-decoration-none">
                     <p class="hide-text">
                         {{post.get_workout}} </p>
-                    <ul class="text-capitalize workout">
+                    <ul class="text-capitalize workout-show">
                         {%for workout in post.get_workout %}
                         <li>
                             {{workout}}</li>{%endfor%}
@@ -41,7 +41,9 @@
         </div>
 
         <div class="action-btn">
+            {% if request.user.id == post.name_id%}
             <a class="btn btn-primary btn-sm  show-edit" href="{% url 'posts:post_edit' post.id %}?action=edit">Edit</a>
+            {%endif%}
             <a class="btn btn-primary btn-sm comment" aria-current="page"
                 href="{% url 'posts:comment_create' post.id %}">
                 Comment </a>

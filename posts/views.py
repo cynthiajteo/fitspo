@@ -115,7 +115,7 @@ def view_show_post(request, pk):
                 return redirect('posts:all_posts')
 
         context = {"post": post, 'comments': comments, "edit": False}
-        return render(request, 'posts/others.html', context)
+        return render(request, 'posts/show.html', context)
 
     context = {"post": post, 'comments': comments, "edit": False}
     return render(request, 'posts/show.html', context)

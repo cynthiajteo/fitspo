@@ -10,7 +10,13 @@
             <img src="{{post.image.url}}" class="index-image" />
             <br /> <br />
             <div class="workout-show">
-                {{post.workout}}
+                <p class="hide-text">
+                    {{post.get_workout}} </p>
+                <ul class="text-capitalize workout">
+                    {%for workout in post.get_workout %}
+                    <li>
+                        {{workout}}</li>{%endfor%}
+                </ul>
             </div>
 
             {% if request.user.is_superuser %}

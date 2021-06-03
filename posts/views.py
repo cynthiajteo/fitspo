@@ -25,7 +25,26 @@ def view_index(request):
     return render(request, 'posts/index.html', context)
 
 
+@login_required
+def view_search(request):
+    if request.method == 'GET':  # If the form is submitted
+        search = request.GET['query']
+        users = User.objects.all().filter(username__icontains=search)
+        posts = Post.objects.filter(hidden=False).order_by('-created_at')
+        allLikes = Like.objects.filter(liked=True)
+        userLikes = Like.objects.filter(liked=True, user_id=request.user)
+        countLikes = Like.objects.filter(
+            liked=True, user_id=request.user).count
+        context = {'users': users, 'search': search, 'posts': posts,
+                   'userLikes': userLikes, 'allLikes': allLikes, 'countLikes': countLikes, }
+        return render(request, 'posts/search.html', context)
+    else:
+        return render(request, 'posts/index.html')
+
+
 # create new post
+
+
 @login_required
 def view_create(request):
     form = PostForm()

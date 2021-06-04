@@ -5,6 +5,7 @@ app_name = "posts"
 
 urlpatterns = [
     path('', view_index, name='all_posts'),
+    path('search', view_search, name='search_result'),
     path('create/', view_create, name='post_create'),
     path('likes/', view_user_likes, name='user_likes'),
     path('like/<uuid:pk>/', view_like, name='post_like'),

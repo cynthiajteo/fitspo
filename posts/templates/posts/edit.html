@@ -10,12 +10,14 @@
             <img src="{{post.image.url}}" class="index-image" />
             <br /> <br />
             <div class="workout-show">
-                {{post.workout}}
+                <p class="hide-text">
+                    {{post.get_workout}} </p>
+                <ul class="text-capitalize workout">
+                    {%for workout in post.get_workout %}
+                    <li>
+                        {{workout}}</li>{%endfor%}
+                </ul>
             </div>
-
-            {% if request.user.is_superuser %}
-            <a href="{% url 'posts:post_show' post.id %}?action=del">Delete</a>
-            {% endif %}
         </div>
 
         {% if edit %}
@@ -25,7 +27,7 @@
 
                 {{form.as_p}}
 
-                <button>Save Changes</button>
+                <button class="btn btn-primary">Save Changes</button>
             </form>
 
         </div>

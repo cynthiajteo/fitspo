@@ -5,7 +5,6 @@
             href="{% url 'accounts:other_profile_show' user_id=post.name_id %}">{{post.name}}
         </a></h1>
 </div>
-
 <div class="container">
     <div class="row">
         <div class="col-md-4">
@@ -23,7 +22,6 @@
                 </a>
             </div>
         </div>
-
         <div class="col-md-8 comments rounded">
             {% for comment in comments %}
             <br />
@@ -39,7 +37,6 @@
             </div>
             {% endfor %}
         </div>
-
         <div class="action-btn">
             {% if request.user.id == post.name_id%}
             <a class="btn btn-primary btn-sm  show-edit" href="{% url 'posts:post_edit' post.id %}?action=edit">Edit</a>
@@ -48,11 +45,9 @@
                 href="{% url 'posts:comment_create' post.id %}">
                 Comment </a>
             {% if request.user.is_superuser %}
-            <a href="{% url 'posts:post_show' post.id %}?action=del">Delete</a>
+            <a class="btn btn-primary btn-sm delete" href="{% url 'posts:post_show' post.id %}?action=del">Delete</a>
             {% endif %}
         </div>
     </div>
-
-
 </div>
 {% endblock body %}

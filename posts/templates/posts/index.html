@@ -33,7 +33,6 @@
                             <form action="{% url 'posts:post_like' post.id %}" method="post" class='like-form'>
                                 {% csrf_token %}
 
-
                                 {% for like in userLikes %}
                                 {% if like.post_id == post.id and like.user_id == request.user.id%}
 

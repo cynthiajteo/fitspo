@@ -37,7 +37,8 @@
                                 {% csrf_token %}
                                 {% for liked in post.users_posts.all %}
                                 {% if liked.post_id == post.id  %}
-                                <i class="fas fa-heart text-danger"></i>
+                                <button type='submit' value={{post.id}} class="btn btn-link"><i
+                                        class="fas fa-heart text-danger"></i></button>
                                 {%else%}
                                 <button type='submit' value={{post.id}} class="btn btn-link">
                                     <i class="far fa-heart"></i></button>
@@ -45,7 +46,8 @@
                                 {%endfor%}
                                 {% comment %} {% for liked in allLikes %}
                                 {% if liked.post.id == post.id %}
-                                <i class="fas fa-heart text-danger"></i>
+                                <button type='submit' value={{post.id}} class="btn btn-link"><i
+                                        class="fas fa-heart text-danger"></i></button>
                                 {% else %}
                                 <button type='submit' value={{post.id}} class="btn btn-link">
                                     <i class="far fa-heart"></i></button>

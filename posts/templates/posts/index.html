@@ -42,6 +42,7 @@
                                 <button type='submit' value={{post.id}} class="btn btn-link">
                                     <i class="far fa-heart"></i></button>
                                 {%endif%}
+                                {%endfor%}
                                 {% comment %} {% for liked in allLikes %}
                                 {% if liked.post.id == post.id %}
                                 <i class="fas fa-heart text-danger"></i>

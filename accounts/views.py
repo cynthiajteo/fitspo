@@ -1,4 +1,5 @@
 from accounts.models import User, Profile
+from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import login, logout, authenticate
@@ -82,7 +83,10 @@ def views_others(request, user_id=None):
         return redirect('posts:all_posts')
     posts = Post.objects.filter(
         name_id=user_id, hidden=False).order_by('-created_at')
-    context = {'posts': posts, 'user': user}
+    paginator = Paginator(posts, 8)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    context = {'posts': posts, 'user': user, 'page_obj': page_obj}
     return render(request, 'accounts/profile.html', context)
 
 
@@ -96,5 +100,8 @@ def views_profile(request):
 
     posts = Post.objects.filter(
         name=request.user.id, hidden=False).order_by('-created_at')
-    context = {'posts': posts}
+    paginator = Paginator(posts, 8)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    context = {'posts': posts, 'page_obj': page_obj}
     return render(request, 'accounts/profile.html', context)

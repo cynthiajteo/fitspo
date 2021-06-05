@@ -3,7 +3,23 @@
 body {
     font-family: 'Yanone Kaffeesatz', sans-serif;
     font-size: 18px;
-    background-color: rgb(205, 221, 252);
+    background-image: linear-gradient(135deg, #3c8ce7 10%, #00eaff 100%);
+    color: rgb(0, 0, 0);
+    height: 100%;
+}
+
+html {
+    background-image: linear-gradient(135deg, #3c8ce7 10%, #00eaff 100%);
+    height: 100%;
+}
+
+a:link,
+a:visited {
+    color: black;
+}
+
+a:hover {
+    color: rgb(48, 86, 143);
 }
 
 .container {
@@ -34,6 +50,7 @@ body {
 .row.gy-2 {
     width: 100%;
     justify-content: space-around;
+    margin-top: 1em;
 }
 
 .card {
@@ -47,8 +64,49 @@ body {
     overflow: auto;
 }
 
+.text-capitalize.workout {
+    max-height: 11em;
+    min-height: 11em;
+    margin-left: -0.5em;
+    overflow: auto;
+}
+
+.text-capitalize.workout::-webkit-scrollbar {
+    display: none;
+}
+
+.text-capitalize.workout-profile {
+    max-height: 12.5em;
+    min-height: 12.5em;
+    margin-left: -0.5em;
+    overflow: auto;
+}
+
+.text-capitalize.workout-profile::-webkit-scrollbar {
+    display: none;
+}
+
+.text-capitalize.workout-like {
+    max-height: 11em;
+    min-height: 11em;
+    margin-left: -0.5em;
+    overflow: auto;
+}
+.text-capitalize.workout-like::-webkit-scrollbar {
+    display: none;
+}
+.text-capitalize.workout-show {
+    max-height: 13em;
+    min-height: 13em;
+    overflow: hidden auto;
+}
+
+.text-capitalize.workout-show::-webkit-scrollbar {
+    display: none;
+}
+
 .date-text {
-    font-size: 14px;
+    font-size: 16px;
     text-align: end;
     margin-top: 0em;
     margin-bottom: 0em;
@@ -56,7 +114,12 @@ body {
 
 .text-center {
     width: 100%;
-    height: 40%;
+    height: 3em;
+}
+
+.text-center.index {
+    width: 100%;
+    height: 0em;
 }
 
 .like-form {
@@ -66,8 +129,19 @@ body {
 }
 
 .comment-icon.link {
-    margin-left: 150px;
-    margin-top: 20px;
+    margin-left: -11em;
+}
+
+.comment-icon.link.show {
+    margin-left: 12em;
+}
+.show-edit {
+    margin-left: 0.5em;
+}
+
+.action-btn {
+    display: inline-flex;
+    margin-bottom: 0;
 }
 
 .username {
@@ -87,7 +161,7 @@ a {
 }
 
 .col-md-8.comments,
-.col-md-4.comments {
+.col-md-5.comments {
     background-color: rgb(212, 246, 255);
     height: 500px;
     overflow: auto;
@@ -103,6 +177,7 @@ a {
 
 .workout-show {
     height: 57%;
+    margin-top: 0;
 }
 
 .comment-form {
@@ -122,7 +197,8 @@ a {
 .like-icon,
 .profile-icon,
 .create-icon,
-.comment-icon {
+.comment-icon,
+.search-icon {
     width: 22px;
 }
 
@@ -130,16 +206,52 @@ a {
     width: 28px;
 }
 
-.footer {
-    margin-top: 5em;
-    width: 100%;
-    text-align: center;
-    font-size: 12px;
-}
-
 .unlike-btn {
     background-color: transparent;
     border-style: none;
     margin-top: 3px;
     margin-right: 5px;
+}
+
+.btn.btn-primary.btn-sm.delete {
+    background-color: tomato;
+}
+
+.hide-text {
+    display: none;
+}
+
+.search-btn {
+    background-color: transparent;
+    border: none;
+}
+
+.input-group.rounded {
+    width: 12em;
+    margin-top: 0.1em;
+}
+
+.previous {
+    margin-left: 1em;
+}
+
+.current {
+    margin: auto;
+}
+
+.next {
+    margin-right: 1em;
+}
+
+.search {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.edit {
+    min-height: 100%;
+    max-height: 100%;
+    background-color: aliceblue;
+    padding-top: 1em;
 }

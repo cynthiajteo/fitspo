@@ -24,11 +24,15 @@ class Post(models.Model):
             "id": self.id,
             "user": {
                 "username": self.name.username,
+                'id': self.name.id
             }
         }
 
     def get_absolute_url(self):
         return reverse("post_show", kwargs={"pk": self.pk, "post.id": self.id, "name.id": self.name.id})
+
+    def get_workout(self):
+        return self.workout.split('\r\n')
 
 
 class Like(models.Model):
@@ -45,11 +49,13 @@ class Like(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def serialize(self):
-        return{
+        return {
             'id': self.id,
             'user': {
                 'username': self.user.username,
+                'id': self.user.id,
                 'post': {
+                    'id': self.post.id,
                     'image': self.post.image,
                     'workout': self.post.workout,
                     'name': self.post.name.id
@@ -73,6 +79,7 @@ class Comment(models.Model):
     post = models.ForeignKey(Post,
                              on_delete=models.CASCADE, related_name='post_comments')
     created_at = models.DateTimeField(auto_now_add=True)
+    hidden = models.BooleanField(default=False)
 
     def serialize(self):
         return {

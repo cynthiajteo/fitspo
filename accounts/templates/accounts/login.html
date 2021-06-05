@@ -1,14 +1,11 @@
 {% extends 'accounts/base.html' %}
-
 {% block content %}
 <div class="login-title">
     <h1>Login</h1>
 </div>
-
 <div class="login-container">
     <form action="" method="post">
         {% csrf_token %}
-
         <div class="login-row">
             <div class="col-md-12">
                 {{field.errors}}
@@ -22,23 +19,18 @@
             <div class="col-md-12">
                 <label>Password</label>
                 <input type="password" class="form-control" name="password" required>
-
             </div>
             <br />
             {% if messages %}
-
             {% for message in messages %}
             <p class='error-msg'>{{ message }}</p>
             {% endfor %}
-
             {% endif %}
             <div>
                 <button class="btn btn-primary">Login</button>
             </div>
         </div>
-
     </form>
-
 </div>
 
 {% endblock content %}

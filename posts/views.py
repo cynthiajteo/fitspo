@@ -1,18 +1,45 @@
-from django.contrib.auth import login
+from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import *
 from .forms import *
+from django import template
+
+
 # Create your views here.
-
-
 # shows all posts on main page
 @login_required
 def view_index(request):
     posts = Post.objects.filter(hidden=False).order_by('-created_at')
-    liked = Like.objects.all()
-    context = {'posts': posts, 'liked': liked}
+    paginator = Paginator(posts, 8)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    allLikes = Like.objects.filter(liked=True)
+    userLikes = Like.objects.filter(liked=True, user_id=request.user)
+    countLikes = Like.objects.filter(liked=True, user_id=request.user).count
+
+    context = {'posts': posts, 'userLikes': userLikes, 'allLikes': allLikes, 'countLikes': countLikes,
+               'page_obj': page_obj}
+
     return render(request, 'posts/index.html', context)
+
+
+@login_required
+def view_search(request):
+    if request.method == 'GET':  # If the form is submitted
+        search = request.GET['query']
+        users = User.objects.all().filter(username__icontains=search)
+        posts = Post.objects.filter(hidden=False).order_by('-created_at')
+        allLikes = Like.objects.filter(liked=True)
+        userLikes = Like.objects.filter(liked=True, user_id=request.user)
+        countLikes = Like.objects.filter(
+            liked=True, user_id=request.user).count
+        context = {'users': users, 'search': search, 'posts': posts,
+                   'userLikes': userLikes, 'allLikes': allLikes, 'countLikes': countLikes, }
+        return render(request, 'posts/search.html', context)
+    else:
+        return render(request, 'posts/index.html')
 
 
 # create new post
@@ -75,7 +102,7 @@ def view_post(request, pk):
 
 
 # show post
-@login_required
+@ login_required
 def view_show_post(request, pk):
     try:
         post = Post.objects.get(pk=pk)
@@ -105,7 +132,7 @@ def view_show_post(request, pk):
                 return redirect('posts:all_posts')
 
         context = {"post": post, 'comments': comments, "edit": False}
-        return render(request, 'posts/others.html', context)
+        return render(request, 'posts/show.html', context)
 
     context = {"post": post, 'comments': comments, "edit": False}
     return render(request, 'posts/show.html', context)
@@ -169,5 +196,8 @@ def view_user_likes(request):
     post = Post.objects.all()
     likes = Like.objects.filter(
         user=request.user.id, liked=True).order_by('-created_at')
-    context = {'likes': likes, 'post': post}
+    paginator = Paginator(likes, 8)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    context = {'likes': likes, 'post': post, 'page_obj': page_obj}
     return render(request, 'posts/likes.html', context)

@@ -3,8 +3,14 @@
 body {
     font-family: 'Yanone Kaffeesatz', sans-serif;
     font-size: 18px;
-    background-color: rgb(159, 214, 240);
+    background-image: linear-gradient(135deg, #3c8ce7 10%, #00eaff 100%);
     color: rgb(0, 0, 0);
+    height: 100%;
+}
+
+html {
+    background-image: linear-gradient(135deg, #3c8ce7 10%, #00eaff 100%);
+    height: 100%;
 }
 
 a:link,
@@ -44,6 +50,7 @@ a:hover {
 .row.gy-2 {
     width: 100%;
     justify-content: space-around;
+    margin-top: 1em;
 }
 
 .card {
@@ -107,7 +114,7 @@ a:hover {
 
 .text-center {
     width: 100%;
-    height: 10%;
+    height: 3em;
 }
 
 .like-form {

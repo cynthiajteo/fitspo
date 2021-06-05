@@ -17,7 +17,7 @@ Fitspogram aims to:
 
 -   [Installation](#Installation)
 -   [Technologies](#Technologies)
--   [User Story](#User-Story-&-Wireframe)
+-   [User Story](#User-Story-and-Wireframe)
 -   [Wireframe](#Wireframe)
 -   [Main Features](#Main-Features)
 -   [Future Development](#Future-Development)
@@ -53,7 +53,7 @@ Create .env file and include your own:
 -   Cloudinary (Cloud storage)
 -   Bootstrap 5
 
-## User Story & Wireframe
+## User Story and Wireframe
 
 As a User, I want to:
 
@@ -66,7 +66,7 @@ As a User, I want to:
 -   like workouts for future reference
 -   search particular user
 
--   [Link to Wireframe]()
+[Link to Wireframe]()
 
 ## Main Features
 

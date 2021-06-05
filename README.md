@@ -1,6 +1,14 @@
 # FITSPOGRAM
 
-Inspo for Fitspo
+## Introduction
+
+INSPO FOR FITSPO
+
+Fitspogram aims to:
+
+-   allow fitness lovers to share their workout routines
+-   allow users who want to start their fitness journey to have inspiration/motivation
+-   allow users to access a variety of workouts by different users to try
 
 ## App Links
 
@@ -9,20 +17,11 @@ Inspo for Fitspo
 
 ## Table of Contents
 
--   [Introduction](#Introduction)
 -   [Installation](#Installation)
 -   [Technologies](#Technologies)
 -   [User Story](#User-Story)
 -   [Main Features](#Main-Features)
 -   [Future Development](#Future-Development)
-
-## Introduction
-
-Fitspogram aims to:
-
--   allow fitness lovers to share their workout routines
--   allow users who want to start their fitness journey to have inspiration/motivation
--   allow users to access a variety of workouts by different users to try
 
 ## Installation
 

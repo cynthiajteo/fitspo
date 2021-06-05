@@ -100,8 +100,9 @@ def views_profile(request):
 
     posts = Post.objects.filter(
         name=request.user.id, hidden=False).order_by('-created_at')
+    allLikes = Like.objects.filter(liked=True)
     paginator = Paginator(posts, 8)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    context = {'posts': posts, 'page_obj': page_obj}
+    context = {'posts': posts, 'page_obj': page_obj, 'allLikes': allLikes}
     return render(request, 'accounts/profile.html', context)

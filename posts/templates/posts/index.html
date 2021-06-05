@@ -36,14 +36,14 @@
                             <form action="{% url 'posts:post_like' post.id %}" method="post" class='like-form'>
                                 {% csrf_token %}
                                 {% for liked in allLikes %}
-                                {% if liked.post.id == post.id and liked.user.id == request.user%}
+                                {% if liked.post.id == post.id and liked.user.id == request.user.id %}
                                 <i class="fas fa-heart text-danger"></i>
                                 {% else %}
                                 <button type='submit' value={{post.id}} class="btn btn-link">
                                     <i class="far fa-heart"></i></button>
                                 {% endif %}
                                 {% endfor %}
-                                {{post.users_posts.all | length}}
+                                {% comment %} {{post.users_posts.all | length}} {% endcomment %}
                             </form>
                         </div>
                     </div>

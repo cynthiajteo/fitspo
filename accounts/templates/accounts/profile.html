@@ -38,7 +38,7 @@
                                     <i class="far fa-heart"></i></button>
                                 {% endif %}
                                 {% endfor %}
-                                {{post.users_posts.all | length}}
+                                {% comment %} {{post.users_posts.all | length}} {% endcomment %}
                             </form>
                         </div>
                     </div>

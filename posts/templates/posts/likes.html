@@ -38,22 +38,8 @@
 
                             <form action="{% url 'posts:post_like' like.post.id %}" method="post" class='like-form'>
                                 {% csrf_token %}
-                                {%for field in like_form%}
-                                <div class="row mb-3">
-                                    {{field.label_tag}}
-                                    {{field}}
-                                    <div class="text-danger">
-                                        {{field.errors}}
-                                        {{ form.non_field_errors }}
-                                    </div>
-                                    {% if field.help_text %}
-                                    <p class="help">{{ field.help_text|safe }}</p>
-                                    {% endif %}
-                                </div>
-                                {% endfor %}
-                                <button type='submit' value={{like.post.id}} class="unlike-btn"><img
-                                        src="data:image/svg+xml;base64,PHN2ZyBpZD0iQ2FwYV8xIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1MTEuODU3IDUxMS44NTciIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTExLjg1NyA1MTEuODU3IiB3aWR0aD0iNTEyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnPjxnPjxwYXRoIGQ9Im0yNDkuMDMzIDQ4Ny43NTktMjA0LjY2Ny0yMDQuNjY4Yy01OS4xNTQtNTkuMTUzLTU5LjE1NC0xNTUuNDA1IDAtMjE0LjU2MSAyNS43My0yNS43MyA1OS44NjMtNDEuMzY1IDk2LjExMS00NC4wMjQgMzUuODYzLTIuNjI5IDcxLjUzMyA3LjUzMSAxMDAuNDQyIDI4LjYxNWw5LjMwNiA2Ljc4Ny00Ny45OCAxMjQuMDcyIDc2LjQ4NSA3MC4wODctNjIuOTE5IDY4LjU4OHptLTk3LjQxNS00MzMuNjYxYy0yLjk3NyAwLTUuOTU5LjEwOC04Ljk0Ni4zMjctMjkuMDcxIDIuMTM0LTU2LjQ1IDE0LjY3Ny03Ny4wOTMgMzUuMzE4LTQ3LjQ1OCA0Ny40NTktNDcuNDU4IDEyNC42NzggMCAxNzIuMTM1bDEzNC40NTYgMTM0LjQ1Ny0xNi42NDQtODIuNzE3IDUyLjk0MS01Ny43MTEtNjkuNDU0LTYzLjY0NiA0Ni44NTctMTIxLjE2OGMtMTguNzI1LTExLjEwNy00MC4yMTQtMTYuOTk1LTYyLjExNy0xNi45OTV6Ii8+PC9nPjxnPjxwYXRoIGQ9Im0yNzYuODE3IDQ3My43NjYtMjguNTg3LTE0Mi4wNzMgNzIuODk3LTc5LjQ2NC04My41MTUtNzYuNTMgNTEuOTM4LTEzNC4zMDkgNS4zODctMi41NjdjNTcuODY5LTI3LjU3MiAxMjcuMjEyLTE1LjYzMyAxNzIuNTU0IDI5LjcwNyA1OS4xNTQgNTkuMTU1IDU5LjE1NSAxNTUuNDA3LjAwMSAyMTQuNTYxem0zLjgzMy0xMzMuMDM0IDE0LjUzNiA3Mi4yMzggMTUxLjA5My0xNTEuMDkzYzQ3LjQ1Ny00Ny40NTcgNDcuNDU2LTEyNC42NzctLjAwMS0xNzIuMTM1LTM1LTM0Ljk5OS04Ny44MjctNDUuMTkxLTEzMy4xMjQtMjYuMjE1bC00MC4xNzQgMTAzLjg5IDkwLjU0NiA4Mi45NzJ6Ii8+PC9nPjwvZz48L3N2Zz4="
-                                        class='like-icon' /></button>
+                                <button type='submit' value={{like.post.id}} class="btn btn-link"> <i
+                                        class="fas fa-heart text-danger"></i></button>
                             </form>
                         </div>
                     </div>

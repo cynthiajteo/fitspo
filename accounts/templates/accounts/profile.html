@@ -32,13 +32,11 @@
                                 {% csrf_token %}
                                 {% for like in userLikes %}
                                 {% if like.post_id == post.id and like.user_id == request.user.id%}
-
                                 <button type='submit' value={{post.id}} class="btn btn-link"><i
                                         class="fas fa-heart text-danger"></i></button>
 
                                 {%endif %}
                                 {%endfor%}
-
                                 {% if userLikes not in allLikes or countLikes == 0%}
                                 <button type='submit' value={{post.id}} class="btn btn-link">
                                     <i class="far fa-heart"></i></button>
@@ -59,11 +57,9 @@
                     <a href="?page=1">&laquo; first</a>
                     <a href="?page={{ page_obj.previous_page_number }}">previous</a>
                     {% endif %}
-
                     <span class="current">
                         Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
                     </span>
-
                     {% if page_obj.has_next %}
                     <a href="?page={{ page_obj.next_page_number }}">Next 8 </a>
                     <a href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>

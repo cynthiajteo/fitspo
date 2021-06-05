@@ -35,25 +35,12 @@
 
                             <form action="{% url 'posts:post_like' post.id %}" method="post" class='like-form'>
                                 {% csrf_token %}
-                                {% comment %} {% for liked in allLikes %}
-                                {% if liked.post.id == post.id %}
-                                <button type='submit' value={{post.id}} class="btn btn-link"><i
-                                        class="fas fa-heart text-danger"></i></button>
-                                {% else %}
-                                <button type='submit' value={{post.id}} class="btn btn-link">
-                                    <i class="far fa-heart"></i></button>
-                                {% endif %}
-                                {% endfor %} {% endcomment %}
-                                {% comment %} {{post.users_posts.all | length}} {% endcomment %}
                                 {% for like in userLikes %}
                                 {% if like.post_id == post.id and like.user_id == request.user.id%}
-
                                 <button type='submit' value={{post.id}} class="btn btn-link"><i
                                         class="fas fa-heart text-danger"></i></button>
-
                                 {%endif %}
                                 {%endfor%}
-
                                 {% if userLikes not in allLikes or countLikes == 0%}
                                 <button type='submit' value={{post.id}} class="btn btn-link">
                                     <i class="far fa-heart"></i></button>
@@ -68,7 +55,6 @@
                 Be the first to post something!
             </div>
             {% endfor %}
-
             <div class="pagination">
                 <div class="previous">
                     {% if page_obj.has_previous %}
@@ -81,7 +67,6 @@
                         Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
                     </p>
                 </div>
-
                 <div class="next">
                     <p>
                         {% if page_obj.has_next %}
@@ -90,8 +75,6 @@
                         {% endif %}
                     </p>
                 </div>
-
-
             </div>
         </div>
     </div>

@@ -19,7 +19,7 @@ Fitspogram aims to:
 -   [Technologies](#Technologies)
 -   [User Story and Wireframe](#User-Story-and-Wireframe)
 -   [Main Features](#Main-Features)
--   [Future Development](#Future-Development)
+-   [Future Developments](#Future-Developments)
 
 ## Installation
 

@@ -1,21 +1,257 @@
+@import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz&display=swap');
+
+body {
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-size: 18px;
+    background-image: linear-gradient(135deg, #3c8ce7 10%, #00eaff 100%);
+    color: rgb(0, 0, 0);
+    height: 100%;
+}
+
+html {
+    background-image: linear-gradient(135deg, #3c8ce7 10%, #00eaff 100%);
+    height: 100%;
+}
+
+a:link,
+a:visited {
+    color: black;
+}
+
+a:hover {
+    color: rgb(48, 86, 143);
+}
+
 .container {
     display: flex;
 }
 
-.card-img-top {
-    /* width: 250px; */
-    height: 250px;
-    object-fit: fill;
+.index-image {
+    max-width: 100%;
+    min-height: 40%;
+    max-height: 40%;
+    object-fit: cover;
 }
 
 .col-md-4 {
     width: 300px;
+    height: 500px;
 }
 
 .col-md-9 {
-    width: 80%;
+    width: 100%;
 }
 
 .row {
-    width: 1000px;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.row.gy-2 {
+    width: 100%;
+    justify-content: space-around;
+    margin-top: 1em;
+}
+
+.card {
+    height: 100%;
+}
+
+.text-capitalize {
+    height: 10em;
+    width: 100%;
+    margin-bottom: 0;
+    overflow: auto;
+}
+
+.text-capitalize.workout {
+    max-height: 11em;
+    min-height: 11em;
+    margin-left: -0.5em;
+    overflow: auto;
+}
+
+.text-capitalize.workout::-webkit-scrollbar {
+    display: none;
+}
+
+.text-capitalize.workout-profile {
+    max-height: 12.5em;
+    min-height: 12.5em;
+    margin-left: -0.5em;
+    overflow: auto;
+}
+
+.text-capitalize.workout-profile::-webkit-scrollbar {
+    display: none;
+}
+
+.text-capitalize.workout-like {
+    max-height: 11em;
+    min-height: 11em;
+    margin-left: -0.5em;
+    overflow: auto;
+}
+.text-capitalize.workout-like::-webkit-scrollbar {
+    display: none;
+}
+.text-capitalize.workout-show {
+    max-height: 13em;
+    min-height: 13em;
+    overflow: hidden auto;
+}
+
+.text-capitalize.workout-show::-webkit-scrollbar {
+    display: none;
+}
+
+.date-text {
+    font-size: 16px;
+    text-align: end;
+    margin-top: 0em;
+    margin-bottom: 0em;
+}
+
+.text-center {
+    width: 100%;
+    height: 3em;
+}
+
+.text-center.index {
+    width: 100%;
+    height: 0em;
+}
+
+.like-form {
+    text-align: end;
+    margin-top: -32px;
+    margin-right: -13px;
+}
+
+.comment-icon.link {
+    margin-left: -11em;
+}
+
+.comment-icon.link.show {
+    margin-left: 12em;
+}
+.show-edit {
+    margin-left: 0.5em;
+}
+
+.action-btn {
+    display: inline-flex;
+    margin-bottom: 0;
+}
+
+.username {
+    margin-bottom: 0;
+    font-size: 20px;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(24, 62, 131);
+}
+
+.show-image {
+    height: 100px;
+    object-fit: fill;
+}
+
+.col-md-8.comments,
+.col-md-5.comments {
+    background-color: rgb(212, 246, 255);
+    height: 500px;
+    overflow: auto;
+}
+
+#commenter {
+    color: rgb(55, 81, 194);
+}
+
+.comment-time {
+    text-align: end;
+}
+
+.workout-show {
+    height: 57%;
+    margin-top: 0;
+}
+
+.comment-form {
+    max-height: 100%;
+    justify-content: space-evenly;
+}
+
+.comment-box {
+    height: 450px;
+}
+
+#id_comment {
+    height: 400px;
+}
+
+.logout,
+.like-icon,
+.profile-icon,
+.create-icon,
+.comment-icon,
+.search-icon {
+    width: 22px;
+}
+
+.logo {
+    width: 28px;
+}
+
+.unlike-btn {
+    background-color: transparent;
+    border-style: none;
+    margin-top: 3px;
+    margin-right: 5px;
+}
+
+.btn.btn-primary.btn-sm.delete {
+    background-color: tomato;
+}
+
+.hide-text {
+    display: none;
+}
+
+.search-btn {
+    background-color: transparent;
+    border: none;
+}
+
+.input-group.rounded {
+    width: 12em;
+    margin-top: 0.1em;
+}
+
+.previous {
+    margin-left: 1em;
+}
+
+.current {
+    margin: auto;
+}
+
+.next {
+    margin-right: 1em;
+}
+
+.search {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.edit {
+    min-height: 100%;
+    max-height: 100%;
+    background-color: aliceblue;
+    padding-top: 1em;
 }

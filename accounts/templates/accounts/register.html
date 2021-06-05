@@ -1,0 +1,59 @@
+{% extends 'accounts/base.html' %}
+
+{% block content %}
+
+
+<div class="reg-title">
+    <h1>Register Here</h1>
+</div>
+
+<div class="reg-container">
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-6">
+                <label>First Name</label>
+                <input type="text" class="form-control" name="first_name" required>
+            </div>
+
+            <div class="col-md-6">
+                <label>Last Name</label>
+                <input type="text" class="form-control" name="last_name" required></div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-6">
+                <label>Email</label>
+                <input type="text" class="form-control" name="email" required>
+            </div>
+            <div class="col-md-6">
+                <label>Username</label>
+                <input type="text" class="form-control" name="username" required>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-6">
+                <label>Password</label>
+                <input type="password" class="form-control" name="password" required>
+            </div>
+
+            <div class="col-md-6">
+                <label>Password confirm</label>
+                <input type="password" class="form-control" name="password_confirm" required></div>
+        </div>
+        <br />
+        {% if messages %}
+
+        {% for message in messages %}
+        <div class="error-msg">
+            {{ message }}
+        </div>
+        {% endfor %}
+
+        {% endif %}
+        <br />
+        <button class="btn btn-primary">Register</button>
+    </form>
+
+</div>{% endblock content %}

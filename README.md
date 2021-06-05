@@ -17,8 +17,7 @@ Fitspogram aims to:
 
 -   [Installation](#Installation)
 -   [Technologies](#Technologies)
--   [User Story](#User-Story-and-Wireframe)
--   [Wireframe](#Wireframe)
+-   [User Story and Wireframe](#User-Story-and-Wireframe)
 -   [Main Features](#Main-Features)
 -   [Future Development](#Future-Development)
 
@@ -66,7 +65,7 @@ As a User, I want to:
 -   like workouts for future reference
 -   search particular user
 
-[Link to Wireframe]()
+[Link to Wireframe](https://docs.google.com/presentation/d/184MyZmmj8U7LkJyCWNvx2io9vcyR166VJw5bc8eDKjA/edit#slide=id.gdec580192f_0_23)
 
 ## Main Features
 

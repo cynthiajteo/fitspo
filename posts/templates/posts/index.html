@@ -36,7 +36,7 @@
                             <form action="{% url 'posts:post_like' post.id %}" method="post" class='like-form'>
                                 {% csrf_token %}
                                 {% for liked in post.users_posts.all %}
-                                {% if liked.post.id == post.id %}
+                                {% if liked.post.id == post.id  and liked.name.id == request.user %}
                                 <i class="fas fa-heart text-danger"></i>
                                 {%else%}
                                 <button type='submit' value={{post.id}} class="btn btn-link">
@@ -52,6 +52,7 @@
                                 {% endif %}
                                 {% endfor %} {% endcomment %}
                                 {% comment %} {{post.users_posts.all | length}} {% endcomment %}
+                                {{countLikes}}
                             </form>
                         </div>
                     </div>

@@ -17,7 +17,7 @@ def view_index(request):
 
     allLikes = Like.objects.filter(liked=True)
     userLikes = Like.objects.filter(liked=True, user_id=request.user)
-    countLikes = Like.objects.filter(liked=True, user_id=request.user).count
+    countLikes = Like.objects.filter(liked=True).count
 
     context = {'posts': posts, 'userLikes': userLikes, 'allLikes': allLikes, 'countLikes': countLikes,
                'page_obj': page_obj}

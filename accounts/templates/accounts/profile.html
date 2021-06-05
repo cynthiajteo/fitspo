@@ -39,11 +39,7 @@
                                 {%endif %}
                                 {%endfor%}
 
-                                {% if userLikes not in allLikes %}
-                                <button type='submit' value={{post.id}} class="btn btn-link">
-                                    <i class="far fa-heart"></i></button>
-                                {%endif %}
-                                {% if countLikes == 0 %}
+                                {% if userLikes not in allLikes or countLikes == 0%}
                                 <button type='submit' value={{post.id}} class="btn btn-link">
                                     <i class="far fa-heart"></i></button>
                                 {%endif %}

@@ -215,6 +215,7 @@ a {
 
 .btn.btn-primary.btn-sm.delete {
     background-color: tomato;
+    margin-left: -6em;
 }
 
 .hide-text {

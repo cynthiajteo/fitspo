@@ -4,13 +4,13 @@ Inspo for Fitspo
 
 ## App Links
 
-[App]()
-[Project Management](https://github.com/cynthiajteo/fitspo/projects/1)
+-   [App]()
+-   [Project Management](https://github.com/cynthiajteo/fitspo/projects/1)
 
 ## Table of Contents
 
 -   [Introduction](#Introduction)
--   [How To Run App](#How-To-Run-App)
+-   [Installation](#Installation)
 -   [Technologies](#Technologies)
 -   [User Story](#User-Story)
 -   [Main Features](#Main-Features)
@@ -24,12 +24,16 @@ Fitspogram aims to:
 -   allow users who want to start their fitness journey to have inspiration/motivation
 -   allow users to access a variety of workouts by different users to try
 
-## How To Run App
+## Installation
 
 Run these commands:
-`pipenv shell`
-`pipenv install django`
-`pipenv run python manage.py runserver`
+
+-   `git clone git@github.com:cynthiajteo/fitspo.git`
+-   `pipenv shell`
+-   `pipenv install django psycopg2-binary`
+-   `pipenv run python manage.py makemigrations`
+-   `pipenv run python manage.py migrate`
+-   `pipenv run python manage.py runserver`
 
 Create .env file and include your own:
 
@@ -49,6 +53,7 @@ Create .env file and include your own:
 -   Psycopg2-binary (PostgreSQL database adapter)
 -   Python Dotenv
 -   Cloudinary (Cloud storage)
+-   Bootstrap 5
 
 ## User Story
 

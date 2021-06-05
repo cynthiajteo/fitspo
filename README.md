@@ -1,1 +1,78 @@
-# fitspo
+# FITSPOGRAM
+
+Inspo for Fitspo
+
+## App Links
+
+[App]()
+[Project Management](https://github.com/cynthiajteo/fitspo/projects/1)
+
+## Table of Contents
+
+-   [Introduction](#Introduction)
+-   [How To Run App](#How-To-Run-App)
+-   [Technologies](#Technologies)
+-   [User Story](#User-Story)
+-   [Main Features](#Main-Features)
+-   [Future Development](#Future-Development)
+
+## Introduction
+
+Fitspogram aims to:
+
+-   allow fitness lovers to share their workout routines
+-   allow users who want to start their fitness journey to have inspiration/motivation
+-   allow users to access a variety of workouts by different users to try
+
+## How To Run App
+
+Run these commands:
+`pipenv shell`
+`pipenv install django`
+`pipenv run python manage.py runserver`
+
+Create .env file and include your own:
+
+-   SECRET_KEY
+-   DATABASE_NAME
+-   DATABASE_USER
+-   PORT
+-   CLOUD_NAME (cloudinary)
+-   API_KEY (cloudinary)
+-   API_SECRET (cloudinary)
+
+## Technologies
+
+-   Django
+-   Python
+-   PostgreSQL (Database)
+-   Psycopg2-binary (PostgreSQL database adapter)
+-   Python Dotenv
+-   Cloudinary (Cloud storage)
+
+## User Story
+
+As a User, I want to:
+
+-   register/sign up/login/logout
+-   create own workout with a photo
+-   view own workout
+-   edit/delete own workout
+-   view other users' workouts
+-   comment on workouts
+-   like workouts for future reference
+-   search particular user
+
+## Main Features
+
+-   create/view/edit/delete workout with photo
+-   comment on workout post
+-   search particular user
+-   auto logout after 1 day
+
+## Future Developments
+
+-   edit own comments
+-   include profile pic
+-   allow user to follow other users
+-   display following and followers

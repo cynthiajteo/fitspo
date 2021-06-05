@@ -43,8 +43,6 @@ def view_search(request):
 
 
 # create new post
-
-
 @login_required
 def view_create(request):
     form = PostForm()

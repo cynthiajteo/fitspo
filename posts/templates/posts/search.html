@@ -68,6 +68,10 @@
             </div>
             {%endfor%}
         </div>
+        {%empty%}
+        <div class="empty alert alert-light search" role="alert">
+            User does not exist, try another user
+        </div>
         {%endfor%}
     </div>
 </div>

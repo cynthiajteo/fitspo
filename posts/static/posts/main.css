@@ -7,7 +7,8 @@ body {
     color: rgb(0, 0, 0);
 }
 
-a:link {
+a:link,
+a:visited {
     color: black;
 }
 
@@ -88,9 +89,8 @@ a:hover {
     display: none;
 }
 .text-capitalize.workout-show {
-    max-height: 15em;
-    min-height: 15em;
-    margin-left: -0.5em;
+    max-height: 13em;
+    min-height: 13em;
     overflow: hidden auto;
 }
 
@@ -117,8 +117,19 @@ a:hover {
 }
 
 .comment-icon.link {
-    margin-left: -12em;
-    margin-top: 20px;
+    margin-left: -11em;
+}
+
+.comment-icon.link.show {
+    margin-left: 12em;
+}
+.show-edit {
+    margin-left: 0.5em;
+}
+
+.action-btn {
+    display: inline-flex;
+    margin-bottom: 0;
 }
 
 .username {
@@ -154,6 +165,7 @@ a {
 
 .workout-show {
     height: 57%;
+    margin-top: 0;
 }
 
 .comment-form {
@@ -217,4 +229,17 @@ a {
 
 .next {
     margin-right: 1em;
+}
+
+.search {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.edit {
+    min-height: 100%;
+    max-height: 100%;
+    background-color: aliceblue;
+    padding-top: 1em;
 }

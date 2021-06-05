@@ -1,8 +1,6 @@
 # FITSPOGRAM
 
-## Introduction
-
-INSPO FOR FITSPO
+## Introduction - INSPO FOR FITSPO
 
 Fitspogram aims to:
 
@@ -19,7 +17,8 @@ Fitspogram aims to:
 
 -   [Installation](#Installation)
 -   [Technologies](#Technologies)
--   [User Story](#User-Story)
+-   [User Story](#User-Story-&-Wireframe)
+-   [Wireframe](#Wireframe)
 -   [Main Features](#Main-Features)
 -   [Future Development](#Future-Development)
 
@@ -54,7 +53,7 @@ Create .env file and include your own:
 -   Cloudinary (Cloud storage)
 -   Bootstrap 5
 
-## User Story
+## User Story & Wireframe
 
 As a User, I want to:
 
@@ -66,6 +65,8 @@ As a User, I want to:
 -   comment on workouts
 -   like workouts for future reference
 -   search particular user
+
+-   [Link to Wireframe]()
 
 ## Main Features
 

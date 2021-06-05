@@ -1,6 +1,6 @@
 # FITSPOGRAM
 
-## Introduction - INSPO FOR FITSPO
+## Introduction - Inspo for Fitspo
 
 Fitspogram aims to:
 

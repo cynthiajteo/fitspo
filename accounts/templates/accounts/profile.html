@@ -30,15 +30,23 @@
 
                             <form action="{% url 'posts:post_like' post.id %}" method="post" class='like-form'>
                                 {% csrf_token %}
-                                {% for liked in allLikes %}
-                                {% if liked.post.id == post.id %}
-                                <i class="fas fa-heart text-danger"></i>
-                                {% else %}
+                                {% for like in userLikes %}
+                                {% if like.post_id == post.id and like.user_id == request.user.id%}
+
+                                <button type='submit' value={{post.id}} class="btn btn-link"><i
+                                        class="fas fa-heart text-danger"></i></button>
+
+                                {%endif %}
+                                {%endfor%}
+
+                                {% if userLikes not in allLikes %}
                                 <button type='submit' value={{post.id}} class="btn btn-link">
                                     <i class="far fa-heart"></i></button>
-                                {% endif %}
-                                {% endfor %}
-                                {% comment %} {{post.users_posts.all | length}} {% endcomment %}
+                                {%endif %}
+                                {% if countLikes == 0 %}
+                                <button type='submit' value={{post.id}} class="btn btn-link">
+                                    <i class="far fa-heart"></i></button>
+                                {%endif %}
                             </form>
                         </div>
                     </div>

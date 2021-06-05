@@ -57,8 +57,9 @@
                                 {% if userLikes not in allLikes %}
                                 <button type='submit' value={{post.id}} class="btn btn-link">
                                     <i class="far fa-heart"></i></button>
-                                {%elif if countLikes == 0 %}
-                                {% comment %} {% if countLikes == 0 %} {% endcomment %}
+                                {%endif %}
+
+                                {% if countLikes == 0 %}
                                 <button type='submit' value={{post.id}} class="btn btn-link">
                                     <i class="far fa-heart"></i></button>
                                 {%endif %}

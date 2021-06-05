@@ -1,0 +1,1 @@
+web: gunicorn fitspo.wsgi --log-file -

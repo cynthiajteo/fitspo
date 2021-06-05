@@ -12,8 +12,13 @@
             <img src="{{post.image.url}}" class="index-image" /><br /><br />
             <div class="workout-show">
                 <a href="{% url 'posts:post_show' post.id %}" class="text-decoration-none">
-                    <p class="text-capitalize">
-                        {{post.workout}}</p>
+                    <p class="hide-text">
+                        {{post.get_workout}} </p>
+                    <ul class="text-capitalize workout-show">
+                        {%for workout in post.get_workout %}
+                        <li>
+                            {{workout}}</li>{%endfor%}
+                    </ul>
                 </a>
             </div>
         </div>
@@ -25,6 +30,7 @@
                 <span id="commenter">{{comment.name}}: </span> {{comment.comment}}
             </p>
             <p class="date-text">{{comment.created_at|date:'d M Y' }}</p>
+            <hr />
             {% empty %}
             <br />
             <div class="empty alert alert-light" role="alert">

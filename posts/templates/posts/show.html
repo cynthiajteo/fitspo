@@ -20,6 +20,19 @@
                             {{workout}}</li>{%endfor%}
                     </ul>
                 </a>
+                <div class="action-btn">
+                    {% if request.user.id == post.name_id%}
+                    <a class="btn btn-primary btn-sm  show-edit"
+                        href="{% url 'posts:post_edit' post.id %}?action=edit">Edit</a>
+                    {%endif%}
+                    <a class="btn btn-primary btn-sm comment" aria-current="page"
+                        href="{% url 'posts:comment_create' post.id %}">
+                        Comment </a>
+                    {% if request.user.is_superuser %}
+                    <a class="btn btn-primary btn-sm delete"
+                        href="{% url 'posts:post_show' post.id %}?action=del">Delete</a>
+                    {% endif %}
+                </div>
             </div>
         </div>
         <div class="col-md-8 comments rounded">
@@ -37,17 +50,7 @@
             </div>
             {% endfor %}
         </div>
-        <div class="action-btn">
-            {% if request.user.id == post.name_id%}
-            <a class="btn btn-primary btn-sm  show-edit" href="{% url 'posts:post_edit' post.id %}?action=edit">Edit</a>
-            {%endif%}
-            <a class="btn btn-primary btn-sm comment" aria-current="page"
-                href="{% url 'posts:comment_create' post.id %}">
-                Comment </a>
-            {% if request.user.is_superuser %}
-            <a class="btn btn-primary btn-sm delete" href="{% url 'posts:post_show' post.id %}?action=del">Delete</a>
-            {% endif %}
-        </div>
+
     </div>
 </div>
 {% endblock body %}

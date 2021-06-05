@@ -8,12 +8,10 @@ django = "*"
 python-dotenv = "*"
 psycopg2-binary = "*"
 cloudinary = "*"
-djangorestframework-simplejwt = "*"
 markdown = "*"
 django-filter = "*"
 django-cors-headers = "*"
-python-jose = "*"
-social-auth-app-django = "*"
+
 
 [dev-packages]
 

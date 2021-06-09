@@ -2,7 +2,7 @@
 
 ## About the app
 
-INSPO FOR FITSPO
+*INSPO FOR FITSPO*
 
 Fitspogram aims to:
 
@@ -10,7 +10,7 @@ Fitspogram aims to:
 -   allow users who want to start their fitness journey to have inspiration/motivation
 -   allow users to access a variety of workouts by different users to try
 
--   [App](https://cjt-fitspo.herokuapp.com/)
+[Application Link](https://cjt-fitspo.herokuapp.com/)
 
 ## Installation
 

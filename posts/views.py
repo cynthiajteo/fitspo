@@ -11,7 +11,7 @@ from django import template
 @login_required
 def view_index(request):
     posts = Post.objects.filter(hidden=False).order_by('-created_at')
-    paginator = Paginator(posts, 8)
+    paginator = Paginator(posts, 4)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 

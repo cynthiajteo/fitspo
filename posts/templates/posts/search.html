@@ -9,15 +9,13 @@
 <div class=" container">
     <div class="col-md-9">
         <div class="row gy-2">
-            {% comment %} {% for post in user.user_posts.all %} {% endcomment %}
+            {% for post in user.user_posts.all %}
             <div class="col-md-4">
-                {% for post in user.user_posts.all %}
                 <div class="card">
                     {% if post.image %}
                     <img src="{{post.image.url}}" class="index-image" />
                     {% endif %}
                     <div class="card-body">
-
                         <a href="{% url 'posts:post_show' post.id %}" class="text-decoration-none">
                             <p class="hide-text">
                                 {{post.get_workout}} </p>
@@ -58,10 +56,10 @@
                         </div>
                     </div>
                 </div>
-                {%empty%}
-                <div class="empty alert alert-light search" role="alert">
-                    User has not posted anything
-                </div>
+            </div>
+            {%empty%}
+            <div class="empty alert alert-light search" role="alert">
+                User has not posted anything
             </div>
             {%endfor%}
         </div>

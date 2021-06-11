@@ -2,7 +2,7 @@
 
 ## About the app
 
-*INSPO FOR FITSPO*
+_INSPO FOR FITSPO_
 
 Fitspogram aims to:
 
@@ -43,10 +43,11 @@ Create .env file and include your own:
 -   Cloudinary (Cloud storage)
 -   Bootstrap 5
 
-## Project Management & Wireframe
+## Project Management, Wireframe and Screenshots
 
 -   [GitHub Project](https://github.com/cynthiajteo/fitspo/projects/1)
--   [Wireframe](https://docs.google.com/presentation/d/184MyZmmj8U7LkJyCWNvx2io9vcyR166VJw5bc8eDKjA/edit#slide=id.gdec580192f_0_23)
+-   [Wireframe](https://www.canva.com/design/DAEeJGKRWWo/v9azN08JVB9JdIoE-sbKzA/view?utm_content=DAEeJGKRWWo&utm_campaign=designshare&utm_medium=link&utm_source=publishpresent)
+-   [Screenshots](https://docs.google.com/presentation/d/184MyZmmj8U7LkJyCWNvx2io9vcyR166VJw5bc8eDKjA/edit#slide=id.gdec580192f_0_23)
 
 ## Future Developments
 
